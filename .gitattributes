@@ -1,0 +1,9 @@
+# Always check-out / check-in files with LF line endings.
+* text=auto eol=lf
+
+# Exclude from git diff.
+go.sum linguist-generated=true
+
+# Exclude from language percentage.
+/.github/* linguist-documentation
+/docs/* linguist-documentation
