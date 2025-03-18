@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       matrix:
-        os:
+        include:
           - {runner: "ubuntu", os: "linux"}
           - {runner: "windows", os: "windows"}
           - {runner: "macos", os: "darwin"}
