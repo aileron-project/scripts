@@ -8,8 +8,9 @@ TARGETS:
   - go-build      : build binary.
 
 VARIABLES [default value]:
+  - GO_CMD           : go command. [go]
   - GO_BUILD_TARGET  : go build target. [All ./cmd/* directories]
-  - GO_BUILD_OUTPUT  : binary output directory. [_output/bin/$(GOOS)-$(GOARCH)/]
+  - GO_BUILD_OUTPUT  : binary output directory. [_output/bin/$$(GOOS)-$$(GOARCH)/]
   - GO_BUILD_FLAGS   : go build flags [-trimpath]
   - GO_BUILD_TAGS    : tags passed to the -tags. [netgo,osusergo]
   - GO_BUILD_LDFLAGS : flags passed to the -ldflags. [-w -s -extldflags '-static']
@@ -80,8 +81,7 @@ GO_BUILD_GCFLAGS ?=
 ##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
 ##                                                                            ##
 #                                                                              #
-GO_BUILD_CMD := $(GO_CMD) build 
-GO_BUILD_CMD += $(GO_BUILD_FLAGS)
+GO_BUILD_CMD := $(GO_CMD) build $(GO_BUILD_FLAGS)
 GO_BUILD_CMD += -tags="$(GO_BUILD_TAGS)"
 GO_BUILD_CMD += -ldflags="$(GO_BUILD_LDFLAGS)"
 GO_BUILD_CMD += -gcflags="$(GO_BUILD_GCFLAGS)"

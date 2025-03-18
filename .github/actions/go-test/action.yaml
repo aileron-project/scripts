@@ -1,0 +1,35 @@
+name: Go Test
+description: ""
+inputs:
+  go-os:
+    description: "GOOS for make go-test"
+    required: false
+    default: ""
+  go-arch:
+    description: "GOARCH for make go-test"
+    required: false
+    default: ""
+  go-arm:
+    description: "GOARM for make go-test"
+    required: false
+    default: ""
+  args:
+    description: "additional args for make go-test"
+    required: false
+    default: ""
+  artifact-path:
+    description: "go test artifact path"
+    required: false
+    default: "_output/coverage*"
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        make go-test ARGS="${{ inputs.args }}" \
+        GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}" 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: go-test-${{ inputs.go-os }}-${{ inputs.go-arch }}${{ inputs.go-arm }}
+        path: ${{ inputs.artifact-path }}

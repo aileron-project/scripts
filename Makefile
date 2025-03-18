@@ -9,6 +9,7 @@ ifneq (,$(wildcard .env))
 endif
 
 include _makefiles/go-build.mk
+include _makefiles/go-test.mk
 include _makefiles/go.mk
 include _makefiles/protolint.mk
 include _makefiles/scanoss.mk

@@ -1,0 +1,27 @@
+name: Go Test QEMU
+description: ""
+inputs:
+  go-os:
+    description: "GOOS for make go-test-qemu"
+    required: false
+    default: "linux"
+  go-arch:
+    description: "GOARCH for make go-test-qemu"
+    required: false
+    default: ""
+  go-arm:
+    description: "GOARM for make go-test-qemu"
+    required: false
+    default: ""
+  args:
+    description: "additional args for make go-test-qemu"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        make go-test-qemu ARGS="${{ inputs.args }}" \
+        GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}" 
