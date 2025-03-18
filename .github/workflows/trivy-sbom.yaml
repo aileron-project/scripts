@@ -1,13 +1,15 @@
 name: Trivy SBOM Test
 
 on:
-  push
+  workflow_dispatch: {}
+  workflow_call: {}
+  push: {}
 
 permissions:
   contents: read 
 
 jobs:
-  vet:
+  sbom:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

@@ -47,5 +47,5 @@ jobs:
           go-version: ${{ inputs.go-version }}
           go-version-file: ${{ inputs.go-version-file }}
           check-latest: ${{ inputs.check-latest }}
-          cache: false
+          cache: ${{ inputs.check-latest }}
       - run: make go-vet ARGS="${{ inputs.args }}"
