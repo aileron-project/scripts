@@ -20,7 +20,7 @@ inputs:
   artifact-path:
     description: "go build artifact path"
     required: false
-    default: "_output/bin/*"
+    default: "_output/bin/**/"
 
 runs:
   using: "composite"
