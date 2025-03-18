@@ -9,6 +9,7 @@ TARGETS:
   - shfmt         : run shfmt command with given args.
   - shfmt-install : install shfmt using `go install`.
   - shfmt-run     : run shfmt to format.
+  - shfmt-local   : shfmt-run for local env before push.
 
 VARIABLES [default value]:
   - GO_CMD        : go command used in shfmt-install. [go]
@@ -109,4 +110,22 @@ shfmt-run-usage:
 .PHONY: shfmt-run
 shfmt-run: shfmt-install
 	$(SHFMT_CMD) $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
+#______________________________________________________________________________#
+
+
+##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
+##                                                                            ##
+#                                                                              #
+.PHONY: shfmt-local-usage
+shfmt-local-usage:
+	# Usage : make shfmt-local ARGS=""
+	# Exec  : $$(SHFMT_CMD) --write $$(ARGS) $$(SHFMT_OPTION) $$(SHFMT_TARGET)
+	# Desc  : Run shfmt and write diff for the specified targets.
+	# Examples:
+	#   - make shfmt-local
+	#   - make shfmt-local ARGS=""
+
+.PHONY: shfmt-local
+shfmt-local: shfmt-install
+	$(SHFMT_CMD) --write $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
 #______________________________________________________________________________#

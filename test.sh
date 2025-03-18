@@ -14,6 +14,6 @@ PATTERN_N)
 	;;
 
 *)
-echo "default"
+	echo "default"
 	;;
 esac
