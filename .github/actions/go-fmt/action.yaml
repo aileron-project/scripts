@@ -1,0 +1,14 @@
+name: Go Format
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make go-fmt"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make go-fmt ARGS="${{ inputs.args }}" 

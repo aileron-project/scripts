@@ -1,0 +1,14 @@
+name: Go Vet
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make go-vet"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make go-vet ARGS="${{ inputs.args }}" 

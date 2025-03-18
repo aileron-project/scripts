@@ -1,4 +1,4 @@
-name: Scan OSS
+name: Go Format
 
 on:
   workflow_dispatch: {}
@@ -9,9 +9,10 @@ permissions:
   contents: read 
 
 jobs:
-  scan:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - uses: aileron-project/scripts/.github/actions/scanoss@main
+      - uses: aileron-project/scripts/.github/actions/setup-go@main
+      - uses: aileron-project/scripts/.github/actions/go-fmt@main
