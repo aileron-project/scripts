@@ -8,6 +8,7 @@ ifneq (,$(wildcard .env))
   include .env
 endif
 
+include _makefiles/scanoss.mk
 include _makefiles/shellcheck.mk
 include _makefiles/shfmt.mk
 include _makefiles/trivy.mk
