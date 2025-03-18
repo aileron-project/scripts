@@ -12,4 +12,4 @@ runs:
   steps:
     - uses: mfinelli/setup-shfmt@v3
     - shell: bash
-      run: make shfmt-run SHFMT_CMD=shfmt ARGS="${{ inputs.args }}" 
+      run: make shfmt-run SHFMT_CMD=shfmt ARGS="${{ inputs.args }}"

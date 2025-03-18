@@ -11,4 +11,4 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: make golangci-lint-run ARGS="${{ inputs.args }}" 
+      run: make golangci-lint-run ARGS="${{ inputs.args }}"

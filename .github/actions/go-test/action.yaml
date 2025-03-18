@@ -28,7 +28,7 @@ runs:
     - shell: bash
       run: |
         make go-test ARGS="${{ inputs.args }}" \
-        GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}" 
+        GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}"
     - uses: actions/upload-artifact@v4
       with:
         name: go-test-${{ inputs.go-os }}-${{ inputs.go-arch }}${{ inputs.go-arm }}

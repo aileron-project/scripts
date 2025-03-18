@@ -11,4 +11,4 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: make go-vet ARGS="${{ inputs.args }}" 
+      run: make go-vet ARGS="${{ inputs.args }}"

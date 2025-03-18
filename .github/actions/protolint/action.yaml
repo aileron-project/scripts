@@ -11,4 +11,4 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: make protolint-run ARGS="${{ inputs.args }}" 
+      run: make protolint-run ARGS="${{ inputs.args }}"

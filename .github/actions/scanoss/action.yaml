@@ -14,4 +14,4 @@ runs:
       with:
         python-version: 3.x
     - shell: bash
-      run: make scanoss-run ARGS="${{ inputs.args }}" 
+      run: make scanoss-run ARGS="${{ inputs.args }}"

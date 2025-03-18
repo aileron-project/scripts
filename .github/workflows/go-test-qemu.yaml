@@ -6,7 +6,7 @@ on:
   push: {}
 
 permissions:
-  contents: read 
+  contents: read
 
 jobs:
   test:
@@ -16,22 +16,22 @@ jobs:
     strategy:
       matrix:
         include:
-          - {arch: "amd64", arm: ""}
-          - {arch: "arm", arm: "5"}
-          - {arch: "arm", arm: "6"}
-          - {arch: "arm", arm: "7"}
-          - {arch: "arm64", arm: ""}
-          - {arch: "ppc64", arm: ""}
-          - {arch: "ppc64le", arm: ""}
-          - {arch: "riscv64", arm: ""}
-          - {arch: "s390x", arm: ""}
-          - {arch: "loong64", arm: ""}
-          - {arch: "386", arm: ""}
-          - {arch: "mips", arm: ""}
-          - {arch: "mips64", arm: ""}
-          - {arch: "mips64le", arm: ""}
-          - {arch: "mipsle", arm: ""}
-          - {arch: "sparc64", arm: ""}
+          - { arch: "amd64", arm: "" }
+          - { arch: "arm", arm: "5" }
+          - { arch: "arm", arm: "6" }
+          - { arch: "arm", arm: "7" }
+          - { arch: "arm64", arm: "" }
+          - { arch: "ppc64", arm: "" }
+          - { arch: "ppc64le", arm: "" }
+          - { arch: "riscv64", arm: "" }
+          - { arch: "s390x", arm: "" }
+          - { arch: "loong64", arm: "" }
+          - { arch: "386", arm: "" }
+          - { arch: "mips", arm: "" }
+          - { arch: "mips64", arm: "" }
+          - { arch: "mips64le", arm: "" }
+          - { arch: "mipsle", arm: "" }
+          - { arch: "sparc64", arm: "" }
     steps:
       - uses: actions/checkout@v4
       - uses: aileron-project/scripts/.github/actions/setup-go@main
