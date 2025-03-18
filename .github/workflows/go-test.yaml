@@ -10,15 +10,15 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.runner }}-latest
     timeout-minutes: 15
-    name: ${{ matrix.os }}
+    name: ${{ matrix.runner }}
     strategy:
       matrix:
         os:
-          - ubuntu
-          - windows
-          - macos
+          - {"runner": ubuntu, "os": linux}
+          - {"runner": windows, "os": windows}
+          - {"runner": macos, "os": darwin}
     steps:
       - uses: actions/checkout@v4
       - uses: aileron-project/scripts/.github/actions/setup-go@main
