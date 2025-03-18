@@ -1,0 +1,26 @@
+name: Trivy SBOM
+
+inputs:
+  args:
+    description: "additional args for make go-vet"
+    required: false
+    type: string
+    default: ""
+  artifact-path:
+    description: "sbom artifact path"
+    required: false
+    type: string
+    default: "_output/*sbom*"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Trivy
+      uses: aquasecurity/setup-trivy@v0.2.2
+      with:
+        version: latest
+    - run: make trivy-sbom TRIVY_CMD=trivy ARGS="${{ inputs.args }}" 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: trivy-sbom
+        path: ${{ inputs.artifact-path }}

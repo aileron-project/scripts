@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: aileron-project/scripts/setup-go@main
-      - uses: aileron-project/scripts/trivy-sbom@main
+      - uses: aileron-project/scripts/.github/actions/setup-go@main
+      - uses: aileron-project/scripts/.github/actions/trivy-sbom@main
