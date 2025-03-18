@@ -14,7 +14,7 @@ VARIABLES [default value]:
   - CSPELL_CMD     : cspell binary path. [cspell]
   - CSPELL_VERSION : cspell version to install. [latest]
   - CSPELL_TARGET  : target of spell check. [./]
-  - CSPELL_OPTION  : cspell lint command line option. [--quiet]
+  - CSPELL_OPTION  : cspell lint command line option. [--quiet --words-only --unique]
 
 REFERENCES:
   - https://cspell.org/
@@ -46,7 +46,7 @@ cspell-help:
 CSPELL_CMD ?= cspell
 CSPELL_VERSION ?= latest
 CSPELL_TARGET ?= ./
-CSPELL_OPTION ?= --quiet
+CSPELL_OPTION ?= --quiet --words-only --unique
 
 
 ##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
