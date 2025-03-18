@@ -1,30 +1,25 @@
 name: Setup Go
-
+description: ""
 inputs:
   go-version:
     description: "go-version for setup-go job"
     required: false
-    type: string
     default: "stable"
   go-version-file:
     description: "go-version-file for setup-go job"
     required: false
-    type: string
     default: ""
   check-latest:
     description: "check-latest for setup-go job"
     required: false
-    type: boolean
-    default: true
+    default: "true"
   cache:
     description: "cache for setup-go job"
     required: false
-    type: boolean
-    default: false
+    default: "false"
   cache-dependency-path:
     description: "cache-dependency-path for setup-go job"
     required: false
-    type: string
     default: ""
 
 runs:
