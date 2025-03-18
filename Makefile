@@ -21,3 +21,18 @@ include _makefiles/shellcheck.mk
 include _makefiles/shfmt.mk
 include _makefiles/trivy.mk
 include _makefiles/util.mk
+
+
+LOCAL_CHECKS += cspell-run
+LOCAL_CHECKS += golangci-lint-run
+LOCAL_CHECKS += markdownlint-run
+LOCAL_CHECKS += prettier-run
+LOCAL_CHECKS += protolint-run
+LOCAL_CHECKS += scanoss-run
+LOCAL_CHECKS += shellcheck-run
+LOCAL_CHECKS += shfmt-run
+LOCAL_CHECKS += shfmt-run
+
+.PHONY: local-check
+local-check: $(LOCAL_CHECKS)
+
