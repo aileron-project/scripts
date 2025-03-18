@@ -1,30 +1,8 @@
-name: Go Vet
+name: Trivy SBOM
 
 on:
-  workflow_dispatch:
-    inputs:
-      args:
-        description: ""
-        required: false
-        type: string
-        default: ""
   workflow_call:
     inputs:
-      go-version:
-        description: "go-version for setup-go job"
-        required: false
-        type: string
-        default: "stable"
-      go-version-file:
-        description: "go-version-file for setup-go job"
-        required: false
-        type: string
-        default: ""
-      check-latest:
-        description: "check-latest for setup-go job"
-        required: false
-        type: boolean
-        default: 'true'
       args:
         description: "additional args for make go-vet"
         required: false
@@ -35,24 +13,15 @@ on:
         required: false
         type: string
         default: "_output/*sbom*"
-  push:
-    branches: ["**"]
 
 permissions:
   contents: read 
 
 jobs:
-  vet:
+  sbom:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: ${{ inputs.go-version }}
-          go-version-file: ${{ inputs.go-version-file }}
-          check-latest: ${{ inputs.check-latest }}
-          cache: false
       - name: Install Trivy
         uses: aquasecurity/setup-trivy@v0.2.2
         with:

@@ -1,0 +1,15 @@
+name: Trivy SBOM Test
+
+on:
+  push
+
+permissions:
+  contents: read 
+
+jobs:
+  vet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: aileron-project/scripts/setup-go@main
+      - uses: aileron-project/scripts/trivy-sbom@main
