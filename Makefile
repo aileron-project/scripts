@@ -7,3 +7,6 @@ endif
 ifneq (,$(wildcard .env))
   include .env
 endif
+
+include _makefiles/trivy.mk
+include _makefiles/util.mk
