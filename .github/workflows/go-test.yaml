@@ -16,9 +16,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - {"runner": ubuntu, "os": linux}
-          - {"runner": windows, "os": windows}
-          - {"runner": macos, "os": darwin}
+          - {runner: "ubuntu", os: "linux"}
+          - {runner: "windows", os: "windows"}
+          - {runner: "macos", os: "darwin"}
     steps:
       - uses: actions/checkout@v4
       - uses: aileron-project/scripts/.github/actions/setup-go@main

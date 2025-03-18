@@ -1,8 +1,17 @@
-# Always check-out / check-in files with LF line endings.
+# Declare git attributes.
+# See the following examples.
+# https://github.com/gitattributes/gitattributes
+
 * text=auto eol=lf
 
+*.{mk,[mM][kK]} text eol=lf
+*.{sh,[sS][hH]} text eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{ps1,[pP][sS]1} text eol=crlf
+
 # Exclude from git diff.
-go.sum linguist-generated=true
+go.sum merge=union linguist-generated=true
 
 # Exclude from language percentage.
 /.github/* linguist-documentation
