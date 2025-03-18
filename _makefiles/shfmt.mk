@@ -24,7 +24,7 @@ REFERENCES:
 IDE INTEGRATIONS:
   - VSCode    : https://marketplace.visualstudio.com/items?itemName=mkhl.shfmt
   - VSCode    : https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format
-	- JetBrains : https://plugins.jetbrains.com/plugin/13122-shell-script
+  - JetBrains : https://plugins.jetbrains.com/plugin/13122-shell-script
   - Vim       : https://github.com/z0mbix/vim-shfmt
   - Others?   : https://github.com/mvdan/sh?tab=readme-ov-file#related-projects
 

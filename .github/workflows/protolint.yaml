@@ -1,4 +1,4 @@
-name: Format Shell
+name: Protolint
 
 on:
   workflow_dispatch: {}
@@ -9,10 +9,10 @@ permissions:
   contents: read 
 
 jobs:
-  check:
+  sbom:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      # - uses: aileron-project/scripts/.github/actions/setup-go@main
-      - uses: aileron-project/scripts/.github/actions/shfmt@main
+      - uses: aileron-project/scripts/.github/actions/setup-go@main
+      - uses: aileron-project/scripts/.github/actions/protolint@main

@@ -1,4 +1,4 @@
-name: ShellCheck
+name: Check Shell
 
 on:
   workflow_dispatch: {}

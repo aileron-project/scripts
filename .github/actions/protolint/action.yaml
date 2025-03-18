@@ -1,0 +1,14 @@
+name: Protolint
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make protolint-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make protolint-run ARGS="${{ inputs.args }}" 

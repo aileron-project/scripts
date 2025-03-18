@@ -25,9 +25,9 @@ REFERENCES:
 
 IDE INTEGRATIONS:
   - VSCode    : https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-official
-	- JetBrains : https://plugins.jetbrains.com/plugin/18690-trivy-findings-explorer
-	- Vim       : https://github.com/aquasecurity/vim-trivy
-	- Others?   : https://trivy.dev/latest/ecosystem/ide/
+  - JetBrains : https://plugins.jetbrains.com/plugin/18690-trivy-findings-explorer
+  - Vim       : https://github.com/aquasecurity/vim-trivy
+  - Others?   : https://trivy.dev/latest/ecosystem/ide/
 
 PROJECT STRUCTURE:
   /                  |-- Project

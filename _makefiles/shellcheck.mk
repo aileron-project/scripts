@@ -19,8 +19,8 @@ REFERENCES:
 
 IDE INTEGRATIONS:
   - VSCode    : hhttps://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
-	- JetBrains : https://plugins.jetbrains.com/plugin/13122-shell-script
-	- JetBrains : https://plugins.jetbrains.com/plugin/10195-shellcheck
+  - JetBrains : https://plugins.jetbrains.com/plugin/13122-shell-script
+  - JetBrains : https://plugins.jetbrains.com/plugin/10195-shellcheck
   - Vim       : https://github.com/itspriddle/vim-shellcheck
 
 PROJECT STRUCTURE:
