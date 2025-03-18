@@ -1,0 +1,57 @@
+name: Go Vet
+
+on:
+  workflow_dispatch: {}
+  workflow_call: {}
+  push: {}
+
+permissions:
+  contents: read 
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: ${{matrix.os}}-${{matrix.arch}}${{matrix.arm}}
+    strategy:
+      matrix:
+        include:
+          - {os: "darwin", arch: "amd64", arm: ""}
+          - {os: "darwin", arch: "arm64", arm: ""}
+          - {os: "freebsd", arch: "386", arm: ""}
+          - {os: "freebsd", arch: "amd64", arm: ""}
+          - {os: "freebsd", arch: "arm", arm: "6"}
+          - {os: "freebsd", arch: "arm", arm: "7"}
+          - {os: "freebsd", arch: "arm64", arm: ""}
+          - {os: "linux", arch: "386", arm: ""}
+          - {os: "linux", arch: "amd64", arm: ""}
+          - {os: "linux", arch: "arm", arm: "6"}
+          - {os: "linux", arch: "arm", arm: "7"}
+          - {os: "linux", arch: "arm64", arm: ""}
+          - {os: "linux", arch: "ppc64", arm: ""}
+          - {os: "linux", arch: "ppc64le", arm: ""}
+          - {os: "linux", arch: "riscv64", arm: ""}
+          - {os: "linux", arch: "s390x", arm: ""}
+          - {os: "netbsd", arch: "386", arm: ""}
+          - {os: "netbsd", arch: "amd64", arm: ""}
+          - {os: "netbsd", arch: "arm", arm: "6"}
+          - {os: "netbsd", arch: "arm", arm: "7"}
+          - {os: "netbsd", arch: "arm64", arm: ""}
+          - {os: "openbsd", arch: "386", arm: ""}
+          - {os: "openbsd", arch: "amd64", arm: ""}
+          - {os: "openbsd", arch: "arm", arm: "6"}
+          - {os: "openbsd", arch: "arm", arm: "7"}
+          - {os: "openbsd", arch: "arm64", arm: ""}
+          - {os: "windows", arch: "386", arm: ""}
+          - {os: "windows", arch: "amd64", arm: ""}
+          - {os: "windows", arch: "arm", arm: "6"}
+          - {os: "windows", arch: "arm", arm: "7"}
+          - {os: "windows", arch: "arm64", arm: ""}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aileron-project/scripts/.github/actions/setup-go@main
+      - uses: aileron-project/scripts/.github/actions/go-build@main
+        with:
+          go-os: ${{ matrix.os }}
+          go-arch: ${{ matrix.arch }}
+          go-arm: ${{ matrix.arm }}
