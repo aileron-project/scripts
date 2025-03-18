@@ -31,7 +31,7 @@ PROJECT STRUCTURE:
   ├─ scripts/            |-- Git submodule
   │  └─ _makefiles/      |
   │     └─ cspell.mk     |
-  ├─ cspell.yaml         |-- Config file
+  ├─ .cspell.yaml        |-- Config file
   ├─ .project-words.txt  |-- Allowed words list (must be configured)
   └─ Makefile            |-- include scripts/_makefiles/cspell.mk
 endef
