@@ -16,9 +16,10 @@ VARIABLES [default value]:
 REFERENCES:
   - https://github.com/koalaman/shellcheck
   - https://www.shellcheck.net/
+  - https://www.shellcheck.net/wiki/Directive#shellcheckrc-file
 
 IDE INTEGRATIONS:
-  - VSCode    : hhttps://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
+  - VSCode    : https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
   - JetBrains : https://plugins.jetbrains.com/plugin/13122-shell-script
   - JetBrains : https://plugins.jetbrains.com/plugin/10195-shellcheck
   - Vim       : https://github.com/itspriddle/vim-shellcheck
@@ -28,6 +29,7 @@ PROJECT STRUCTURE:
   ├─ scripts/             |-- Git submodule
   │  └─ _makefiles/       |
   │     └─ shellcheck.mk  |
+  ├─ .shellcheckrc        |-- Config file
   └─ Makefile             |-- include scripts/_makefiles/shellcheck.mk
 endef
 #------------------------------------------------------------------------------#

@@ -32,7 +32,7 @@ PROJECT STRUCTURE:
   ├─ scripts/            |-- Git submodule
   │  └─ _makefiles/      |
   │     └─ protolint.mk  |
-  ├─ .protolint.yaml     |-- Config file. 
+  ├─ .protolint.yaml     |-- Config file
   └─ Makefile            |-- include scripts/_makefiles/protolint.mk
 endef
 #------------------------------------------------------------------------------#

@@ -1,0 +1,14 @@
+name: cSpell
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make cspell-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make cspell-run ARGS="${{ inputs.args }}" 
