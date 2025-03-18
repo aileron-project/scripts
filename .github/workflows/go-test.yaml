@@ -9,7 +9,7 @@ permissions:
   contents: read 
 
 jobs:
-  build:
+  test:
     name: ${{ matrix.runner }}
     runs-on: ${{ matrix.runner }}-latest
     timeout-minutes: 15
