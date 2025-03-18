@@ -10,9 +10,9 @@ permissions:
 
 jobs:
   build:
+    name: ${{ matrix.runner }}
     runs-on: ${{ matrix.runner }}-latest
     timeout-minutes: 15
-    name: ${{ matrix.runner }}
     strategy:
       matrix:
         os:
