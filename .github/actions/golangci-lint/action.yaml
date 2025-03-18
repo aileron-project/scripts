@@ -1,0 +1,14 @@
+name: Golang CI Lint
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make golangci-lint-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make golangci-lint-run ARGS="${{ inputs.args }}" 

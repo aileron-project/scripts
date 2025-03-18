@@ -4,6 +4,7 @@ import "os"
 
 // Multiply returns x * y.
 func Multiply(x, y int) int {
+	_, _ = readFile("testdata/test.txt")
 	return x * y
 }
 

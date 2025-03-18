@@ -12,6 +12,7 @@ include _makefiles/cspell.mk
 include _makefiles/go-build.mk
 include _makefiles/go-test.mk
 include _makefiles/go.mk
+include _makefiles/golangci-lint.mk
 include _makefiles/protolint.mk
 include _makefiles/scanoss.mk
 include _makefiles/shellcheck.mk
