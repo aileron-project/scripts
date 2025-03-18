@@ -1,0 +1,17 @@
+name: ShellCheck
+
+on:
+  workflow_dispatch: {}
+  workflow_call: {}
+  push: {}
+
+permissions:
+  contents: read 
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aileron-project/scripts/.github/actions/shellcheck@main
