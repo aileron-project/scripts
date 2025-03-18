@@ -21,12 +21,13 @@ VARIABLES [default value]:
 
 REFERENCES:
   - https://github.com/aquasecurity/trivy
-	- https://trivy.dev/latest/ecosystem/ide/
   - https://trivy.dev/latest/docs/target/filesystem/
 
-IDE INTEGRATION:
+IDE INTEGRATIONS:
   - VSCode    : https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-official
 	- JetBrains : https://plugins.jetbrains.com/plugin/18690-trivy-findings-explorer
+	- Vim       : https://github.com/aquasecurity/vim-trivy
+	- Others?   : https://trivy.dev/latest/ecosystem/ide/
 
 PROJECT STRUCTURE:
   /                  |-- Project
@@ -43,6 +44,7 @@ trivy-help:
 	$(info $(trivy.mk))
 	@echo ""
 ################################################################################
+
 
 GO_CMD ?= go
 TRIVY_CMD ?= $(GOBIN)trivy

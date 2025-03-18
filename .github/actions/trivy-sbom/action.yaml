@@ -3,7 +3,7 @@ description: ""
 
 inputs:
   args:
-    description: "additional args for make go-vet"
+    description: "additional args for make trivy-sbom"
     required: false
     default: ""
   artifact-path:
@@ -14,8 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install Trivy
-      uses: aquasecurity/setup-trivy@v0.2.2
+    - uses: aquasecurity/setup-trivy@v0.2.2
       with:
         version: latest
     - shell: bash

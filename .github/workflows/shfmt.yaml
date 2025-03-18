@@ -1,4 +1,4 @@
-name: Trivy SBOM
+name: Shfmt
 
 on:
   workflow_dispatch: {}
@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # - uses: aileron-project/scripts/.github/actions/setup-go@main
-      - uses: aileron-project/scripts/.github/actions/trivy-sbom@main
+      - uses: aileron-project/scripts/.github/actions/shfmt@main

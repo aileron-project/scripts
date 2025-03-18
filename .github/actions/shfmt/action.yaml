@@ -1,0 +1,15 @@
+name: Trivy SBOM
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make shfmt-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - uses: mfinelli/setup-shfmt@v3
+    - shell: bash
+      run: make shfmt-run SHFMT_CMD=shfmt ARGS="${{ inputs.args }}" 
