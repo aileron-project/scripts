@@ -21,6 +21,6 @@ runs:
         baseurl="https://github.com/koalaman/shellcheck/releases/download"
         curl -Lo "shellcheck.tar.xz" "${baseurl}/${VERSION}/shellcheck-${VERSION}.linux.x86_64.tar.xz"
         tar -xf "shellcheck.tar.xz"
-        mv "shellcheck-${VERSION}/shellcheck" "${{ github.action_path }}/shellcheck"
+        mv "shellcheck-${VERSION}/shellcheck" "./"
     - shell: bash
       run: make shellcheck-run SHELLCHECK_CMD=./shellcheck ARGS="${{ inputs.args }}" 
