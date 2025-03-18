@@ -1,0 +1,14 @@
+name: Markdownlint
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make markdownlint-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make markdownlint-run ARGS="${{ inputs.args }}"
