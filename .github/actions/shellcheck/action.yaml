@@ -5,7 +5,7 @@ inputs:
   skip-setup:
     description: "skip setting up shellcheck"
     required: false
-    default: 'false'
+    default: "false"
   version:
     description: "shellcheck version to install"
     required: false
@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      if: ${{ inputs.skip-setup == 'false' }}
+      if: ${{ inputs.skip-setup != "true" }}
       env:
         VERSION: ${{ inputs.version }}
       run: |

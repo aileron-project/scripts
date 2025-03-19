@@ -5,7 +5,7 @@ inputs:
   skip-setup:
     description: "skip running setup-go and ts-graphviz/setup-graphviz"
     required: false
-    default: 'false'
+    default: "false"
   args:
     description: "additional args for make goda-run"
     required: false
@@ -19,9 +19,9 @@ runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/setup-go
-      if: ${{ inputs.skip-setup == 'false' }}
+      if: ${{ inputs.skip-setup != "true" }}
     - uses: ts-graphviz/setup-graphviz@v2
-      if: ${{ inputs.skip-setup == 'false' }}
+      if: ${{ inputs.skip-setup != "true" }}
     - shell: bash
       run: make goda-run ARGS="${{ inputs.args }}"
     - uses: actions/upload-artifact@v4

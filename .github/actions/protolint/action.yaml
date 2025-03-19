@@ -5,7 +5,7 @@ inputs:
   skip-setup:
     description: "skip running setup-go"
     required: false
-    default: 'false'
+    default: "false"
   args:
     description: "additional args for make protolint-run"
     required: false
@@ -15,6 +15,6 @@ runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/setup-go
-      if: ${{ inputs.skip-setup == 'false' }}
+      if: ${{ inputs.skip-setup != "true" }}
     - shell: bash
       run: make protolint-run ARGS="${{ inputs.args }}"
