@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      if: ${{ inputs.skip-setup == false }}
+      if: ${{ inputs.skip-setup == 'false' }}
       env:
         VERSION: ${{ inputs.version }}
       run: |
