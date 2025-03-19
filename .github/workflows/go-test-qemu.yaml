@@ -34,7 +34,6 @@ jobs:
           - { arch: "sparc64", arm: "" }
     steps:
       - uses: actions/checkout@v4
-      - uses: aileron-project/scripts/.github/actions/setup-go@main
       - uses: aileron-project/scripts/.github/actions/go-test-qemu@main
         with:
           go-arch: ${{ matrix.arch }}

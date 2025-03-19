@@ -49,7 +49,6 @@ jobs:
           - { os: "windows", arch: "arm64", arm: "" }
     steps:
       - uses: actions/checkout@v4
-      - uses: aileron-project/scripts/.github/actions/setup-go@main
       - uses: aileron-project/scripts/.github/actions/go-build@main
         with:
           go-os: ${{ matrix.os }}

@@ -2,6 +2,10 @@ name: Go Vulnerability Check
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make govulncheck-run"
     required: false
@@ -10,5 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: ./.github/actions/setup-go
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make govulncheck-run ARGS="${{ inputs.args }}"

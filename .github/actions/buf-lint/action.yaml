@@ -2,10 +2,6 @@ name: Buf Lint
 description: ""
 
 inputs:
-  skip-checkout:
-    description: "skip running actions/checkout"
-    required: false
-    default: 'false'
   skip-setup:
     description: "skip running setup-go"
     required: false
@@ -18,12 +14,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v4
-      if: ${{ ! inputs.skip-checkout }}
-    - shell: bash
-      run: |
-        pwd
-        ls -la
     - uses: ./.github/actions/setup-go
       if: ${{ ! inputs.skip-setup }}
     - shell: bash

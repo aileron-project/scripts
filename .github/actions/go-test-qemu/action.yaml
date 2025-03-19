@@ -1,6 +1,10 @@
 name: Go Test QEMU
 description: ""
 inputs:
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: 'false'
   go-os:
     description: "GOOS for make go-test-qemu"
     required: false
@@ -21,6 +25,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: ./.github/actions/setup-go
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: |
         make go-test-qemu ARGS="${{ inputs.args }}" \

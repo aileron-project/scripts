@@ -2,6 +2,10 @@ name: cSpell
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running actions/setup-node"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make cspell-run"
     required: false
@@ -10,5 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/setup-node@v4
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make cspell-run ARGS="${{ inputs.args }}"

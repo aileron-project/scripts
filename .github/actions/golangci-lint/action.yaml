@@ -2,6 +2,10 @@ name: Golang CI Lint
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make golangci-lint-run"
     required: false
@@ -10,5 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: ./.github/actions/setup-go
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make golangci-lint-run ARGS="${{ inputs.args }}"

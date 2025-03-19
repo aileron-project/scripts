@@ -2,6 +2,10 @@ name: Go Vet
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make go-vet"
     required: false
@@ -10,5 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: ./.github/actions/setup-go
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make go-vet ARGS="${{ inputs.args }}"
