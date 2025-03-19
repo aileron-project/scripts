@@ -13,6 +13,7 @@ GCFLAGS
 Gdpi
 gebes
 Gebes
+gendoc
 genproto
 GOARCH
 GOARM
