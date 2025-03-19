@@ -2,6 +2,14 @@ name: Buf Lint
 description: ""
 
 inputs:
+  skip-checkout:
+    description: "skip running actions/checkout"
+    required: false
+    default: "false"
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: "false"
   args:
     description: "additional args for make buf-lint"
     required: false
@@ -10,5 +18,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@v4
+      if: ${{ inputs.skip-checkout != "false" }}
+    - uses: .github/actions/setup-go@main
+      if: ${{ inputs.skip-setup != "false" }}
     - shell: bash
       run: make buf-lint ARGS="${{ inputs.args }}"
