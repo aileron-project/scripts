@@ -13,4 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v4
+      # - uses: aileron-project/scripts/.github/actions/setup-go@main
       - uses: aileron-project/scripts/.github/actions/buf-lint@main
