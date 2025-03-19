@@ -15,6 +15,6 @@ runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/setup-go
-      if: ${{ inputs.skip-setup != "true" }}
+      if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
       run: make buf-lint ARGS="${{ inputs.args }}"
