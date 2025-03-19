@@ -19,9 +19,9 @@ runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/setup-go
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
     - uses: ts-graphviz/setup-graphviz@v2
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
     - shell: bash
       run: make goda-run ARGS="${{ inputs.args }}"
     - uses: actions/upload-artifact@v4

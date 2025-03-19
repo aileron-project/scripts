@@ -30,7 +30,7 @@ runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/setup-go
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
     - shell: bash
       run: |
         make go-test ARGS="${{ inputs.args }}" \

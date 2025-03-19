@@ -15,7 +15,7 @@ runs:
   using: "composite"
   steps:
     - uses: actions/setup-python@v5
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
       with:
         python-version: 3.x
     - shell: bash

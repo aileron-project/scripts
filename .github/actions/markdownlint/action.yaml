@@ -15,6 +15,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/setup-node@v4
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
     - shell: bash
       run: make markdownlint-run ARGS="${{ inputs.args }}"

@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - uses: aquasecurity/setup-trivy@v0.2.2
-      if: ${{ ! inputs.skip-setup }}
+      if: ${{ inputs.skip-setup == 'false' }}
       with:
         version: latest
     - shell: bash
