@@ -1,0 +1,14 @@
+name: Go Licenses
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make go-licenses-run"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make go-licenses-run ARGS="${{ inputs.args }}"
