@@ -20,7 +20,7 @@ VARIABLES [default value]:
   - GODA_OUTPUT  : graph output path. [_output/dependency-graph.ext]
   - GODA_OPTION  : goda command line option. []
   - DOT_CMD      : dot (graphviz) command. [dot]
-  - DOT_OPTION   : dot command line option. [-Gdpi=250]
+  - DOT_OPTION   : dot command line option. []
 
 REFERENCES:
   - https://github.com/loov/goda
@@ -60,7 +60,7 @@ GODA_TARGET ?= ./...
 GODA_OUTPUT ?= _output/dependency-graph.ext
 GODA_OPTION ?= 
 DOT_CMD ?= dot
-DOT_OPTION ?= -Gdpi=250
+DOT_OPTION ?=
 
 
 ##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
@@ -113,8 +113,8 @@ goda-run-usage:
 	# Usage : make goda-run ARGS=""
 	# Exec  : $$(GODA_CMD) graph $$(ARGS) $$(GODA_OPTION) $$(GODA_TARGET) > $$(basename $$(GODA_OUTPUT)).dot
 	#         cat $$(basename $$(GODA_OUTPUT)).dot | $$(DOT_CMD) -Tsvg $$(DOT_OPTION) -o $$(basename $$(GODA_OUTPUT)).svg
-	#         cat $$(basename $$(GODA_OUTPUT)).dot | $$(DOT_CMD) -Tpng $$(DOT_OPTION) -o $$(basename $$(GODA_OUTPUT)).png
-	#         cat $$(basename $$(GODA_OUTPUT)).dot | $$(DOT_CMD) -Tjpg $$(DOT_OPTION) -o $$(basename $$(GODA_OUTPUT)).jpg
+	#         cat $$(basename $$(GODA_OUTPUT)).dot | $$(DOT_CMD) -Tpng $$(DOT_OPTION) -o $$(basename $$(GODA_OUTPUT)).png -Gdpi=250
+	#         cat $$(basename $$(GODA_OUTPUT)).dot | $$(DOT_CMD) -Tjpg $$(DOT_OPTION) -o $$(basename $$(GODA_OUTPUT)).jpg -Gdpi=250
 	# Desc  : Generate dependency graph.
 	# Examples:
 	#   - make goda-run
@@ -125,6 +125,6 @@ goda-run: goda-install
 	@mkdir -p $(dir $(GODA_OUTPUT))
 	$(GODA_CMD) graph $(ARGS) $(GODA_OPTION) $(GODA_TARGET) > $(basename $(GODA_OUTPUT)).dot
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tsvg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).svg
-	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tpng $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).png
-	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tjpg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).jpg
+	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tpng $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).png -Gdpi=250
+	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tjpg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).jpg -Gdpi=250
 #______________________________________________________________________________#
