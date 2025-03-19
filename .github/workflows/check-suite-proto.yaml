@@ -1,4 +1,4 @@
-name: Buf Lint
+name: Check Suite Common
 
 on:
   workflow_dispatch: {}
@@ -9,7 +9,14 @@ permissions:
   contents: read
 
 jobs:
-  lint:
+  proto-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aileron-project/scripts/.github/actions/protolint@main
+
+  buf-lint:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

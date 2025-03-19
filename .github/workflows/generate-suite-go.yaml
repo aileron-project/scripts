@@ -1,4 +1,4 @@
-name: Trivy SBOM
+name: Check Suite Common
 
 on:
   workflow_dispatch: {}
@@ -9,6 +9,13 @@ permissions:
   contents: read
 
 jobs:
+  dependency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aileron-project/scripts/.github/actions/goda@main
+
   sbom:
     runs-on: ubuntu-latest
     timeout-minutes: 15
