@@ -1,4 +1,4 @@
-name: Check Suite Common
+name: Generate Suite Go
 
 on:
   workflow_dispatch: {}
