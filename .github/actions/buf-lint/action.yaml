@@ -5,11 +5,11 @@ inputs:
   skip-checkout:
     description: "skip running actions/checkout"
     required: false
-    default: "false"
+    default: 'false'
   skip-setup:
     description: "skip running setup-go"
     required: false
-    default: "false"
+    default: 'false'
   args:
     description: "additional args for make buf-lint"
     required: false
