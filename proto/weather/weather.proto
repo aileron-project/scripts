@@ -1,24 +1,36 @@
+// weather service.
 syntax = "proto3";
 
 package weather;
 
 option go_package = "weather";
 
+// Condition
 enum Condition {
+  // SUNNY
   SUNNY = 0;
+  // RAINY
   RAINY = 1;
 }
 
+// Location
 message Location {
+  // latitude
   float latitude = 1;
+  // longitude
   float longitude = 2;
 }
 
+// GetWeatherResponse
 message GetWeatherResponse {
+  // temperature
   float temperature = 1;
+  // conditions
   Condition conditions = 2;
 }
 
+// WeatherService returns weather.
 service WeatherService {
+  // GetWeather
   rpc GetWeather(Location) returns (GetWeatherResponse);
 }
