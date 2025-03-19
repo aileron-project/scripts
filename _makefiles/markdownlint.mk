@@ -53,6 +53,7 @@ MARKDOWNLINT_OPTION ?=
 markdownlint-install-usage:
 	# Usage : make markdownlint-install ARGS=""
 	# Exec  : npm install -g "markdownlint@$$(MARKDOWNLINT_VERSION)"
+	#         npm install -g "markdownlint-cli@$$(MARKDOWNLINT_VERSION)"
 	# Desc  : Install markdownlint using `npm -g`.
 	# Examples:
 	#   - make markdownlint-install
