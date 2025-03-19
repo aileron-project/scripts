@@ -8,6 +8,7 @@ ifneq (,$(wildcard .env))
   include .env
 endif
 
+include _makefiles/buf.mk
 include _makefiles/cspell.mk
 include _makefiles/go-build.mk
 include _makefiles/go-licenses.mk

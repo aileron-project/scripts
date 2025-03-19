@@ -2,6 +2,7 @@
 .vscode/
 .idea/
 
+apis/
 _bin/
 _output/
 *.env.mk

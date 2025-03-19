@@ -1,0 +1,20 @@
+# Reference https://buf.build/docs/configuration/v2/buf-yaml
+version: v2
+lint:
+  use:
+    # - STANDARD
+    - BASIC
+  except:
+    - SERVICE_SUFFIX
+    - ENUM_VALUE_PREFIX
+breaking:
+  use:
+    - FILE
+modules:
+  - path: proto
+  # - path: protovalidate/proto/protovalidate/
+deps:
+  # - buf.build/googleapis/googleapis # Not needed
+  # - buf.build/grpc/grpc # Not needed
+  - buf.build/protocolbuffers/wellknowntypes
+  - buf.build/bufbuild/protovalidate

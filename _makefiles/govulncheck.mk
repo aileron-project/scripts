@@ -12,11 +12,11 @@ TARGETS:
   - govulncheck-run     : run vulnerability check.
 
 VARIABLES [default value]:
-  - GO_CMD              : go-licenses command used in go-licenses-install. [go]
-  - GOVULNCHECK_CMD     : govulncheck binary path. (Default "$(GOBIN)govulncheck")
-  - GOVULNCHECK_VERSION : govulncheck version to install. (Default "latest")
-  - GOVULNCHECK_TARGET  : target of vulnerability check. (Default "./...")
-  - GOVULNCHECK_OPTION  : govulncheck command line option. (Default "")
+  - GO_CMD              : go command used in govulncheck-install. [go]
+  - GOVULNCHECK_CMD     : govulncheck command. [$$(GOBIN)govulncheck]
+  - GOVULNCHECK_VERSION : govulncheck version to install. [latest]
+  - GOVULNCHECK_TARGET  : target of vulnerability check. [./...]
+  - GOVULNCHECK_OPTION  : govulncheck command line option. []
 
 REFERENCES:
   - https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck

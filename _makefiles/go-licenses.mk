@@ -12,8 +12,8 @@ TARGETS:
   - go-licenses-run     : check licenses and generate licenses file.
 
 VARIABLES [default value]:
-  - GO_CMD                    : go-licenses command used in go-licenses-install. [go]
-  - GO_LICENSES_CMD           : go-licenses binary path. [$$(GOBIN)go-licenses]
+  - GO_CMD                    : go command used in go-licenses-install. [go]
+  - GO_LICENSES_CMD           : go-licenses command. [$$(GOBIN)go-licenses]
   - GO_LICENSES_VERSION       : go-licenses version to install. [latest]
   - GO_LICENSES_TARGET        : target for check and report. [./...]
   - GO_LICENSES_OPTION_CHECK  : command line option for check. [--allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause]

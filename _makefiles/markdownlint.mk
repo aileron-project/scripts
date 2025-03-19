@@ -12,7 +12,7 @@ TARGETS:
   - markdownlint-run     : run lint.
 
 VARIABLES [default value]:
-  - MARKDOWNLINT_CMD     : markdownlint binary path. [markdownlint]
+  - MARKDOWNLINT_CMD     : markdownlint command. [markdownlint]
   - MARKDOWNLINT_VERSION : markdownlint version to install. [latest]
   - MARKDOWNLINT_TARGET  : target of lint. [./]
   - MARKDOWNLINT_OPTION  : markdownlint command line option. []

@@ -1,0 +1,14 @@
+name: Buf Lint
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make buf-lint"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: make buf-lint ARGS="${{ inputs.args }}"
