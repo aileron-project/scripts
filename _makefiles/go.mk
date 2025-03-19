@@ -15,7 +15,7 @@ VARIABLES [default value]:
   - GO_VET_TARGET  : go vet target. [./...]
   - GO_VET_OPTION  : go vet command line option. []
   - GO_FMT_TARGET  : go fmt target. [./]
-  - GO_FMT_OPTION  : go fmt command line option. [-l -e]
+  - GO_FMT_OPTION  : go fmt command line option. [-l -e -s]
 
 REFERENCES:
   - https://pkg.go.dev/cmd/vet
@@ -53,7 +53,7 @@ GO_VET_TARGET ?= ./...
 GO_VET_OPTION ?=
 # go fmt envs.
 GO_FMT_TARGET ?= ./
-GO_FMT_OPTION ?= -l -e
+GO_FMT_OPTION ?= -l -e -s
 
 
 ##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####

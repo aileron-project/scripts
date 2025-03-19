@@ -36,3 +36,7 @@ LOCAL_CHECKS += shfmt-run
 .PHONY: local-check
 local-check: $(LOCAL_CHECKS)
 
+.PHONY: local-format
+local-format:
+	$(MAKE) go-fmt ARGS="-w"
+	$(MAKE) prettier-run ARGS="--write"
