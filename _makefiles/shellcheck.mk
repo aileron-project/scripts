@@ -4,6 +4,7 @@ REQUIREMENTS:
   - shellcheck : `shellcheck` command must be available.
 
 TARGETS:
+  - <TARGET>-usage  : show the <TARGET> usage.
   - shellcheck-help : show help message.
   - shellcheck      : run shellcheck command with given args.
   - shellcheck-run  : run shellcheck.

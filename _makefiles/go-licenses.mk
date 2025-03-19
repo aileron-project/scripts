@@ -1,8 +1,8 @@
 ################################################################################
 define go-licenses.mk
 REQUIREMENTS:
-  - go-licenses: `go-licenses` command must be available.
-  - go         : `go` command must be available for `go-licenses-install`.
+  - go-licenses : `go-licenses` command must be available.
+  - go          : `go` command must be available for `go-licenses-install`.
 
 TARGETS:
   - <TARGET>-usage      : show the <TARGET> usage.
@@ -29,11 +29,13 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                        |-- Project
+  /                        |-- Go Project
   ├─ scripts/              |-- Git submodule
   │  └─ _makefiles/        |
   │     └─ go-licenses.mk  |
-  └─ Makefile              |-- include scripts/_makefiles/go-licenses.mk
+  ├─ Makefile              |-- include scripts/_makefiles/go-licenses.mk
+  ├─ go.mod                |
+  └─ go.sum                |
 endef
 #------------------------------------------------------------------------------#
 .PHONY: go-licenses-help
@@ -43,6 +45,7 @@ go-licenses-help:
 ################################################################################
 
 
+GO_CMD ?= go
 GO_LICENSES_CMD ?= $(GOBIN)go-licenses
 GO_LICENSES_VERSION ?= latest
 GO_LICENSES_TARGET ?= ./...

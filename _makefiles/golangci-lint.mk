@@ -5,6 +5,7 @@ REQUIREMENTS:
   - go            : `go` command must be available for `golangci-lint-install`.
 
 TARGETS:
+  - <TARGET>-usage        : show the <TARGET> usage.
   - golangci-lint-help    : show help message.
   - golangci-lint-install : install golangci-lint using `go install`.
   - golangci-lint         : run golangci-lint command with given args.
@@ -28,12 +29,14 @@ IDE INTEGRATIONS:
   - Others?   : https://golangci-lint.run/welcome/integrations/
 
 PROJECT STRUCTURE:
-  /                          |-- Project
+  /                          |-- Go Project
   ├─ scripts/                |-- Git submodule
   │  └─ _makefiles/          |
   │     └─ golangci-lint.mk  |
   ├─ .golangci.yaml          |-- Config file
-  └─ Makefile                |-- include scripts/_makefiles/golangci-lint.mk
+  ├─ Makefile                |-- include scripts/_makefiles/golangci-lint.mk
+  ├─ go.mod                  |
+  └─ go.sum                  |
 endef
 #------------------------------------------------------------------------------#
 .PHONY: golangci-lint-help

@@ -5,6 +5,7 @@ REQUIREMENTS:
   - pip        : `pip` command must be available for `scanoss-install`.
 
 TARGETS:
+  - <TARGET>-usage  : show the <TARGET> usage.
   - scanoss-help    : show help message.
   - scanoss-install : install scanoss using `pip install`.
   - scanoss         : run scanoss command with given args.

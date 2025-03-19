@@ -5,6 +5,7 @@ REQUIREMENTS:
   - npm          : `npm` command must be available for `markdownlint-install`.
 
 TARGETS:
+  - <TARGET>-usage       : show the <TARGET> usage.
   - markdownlint-help    : show help message.
   - markdownlint-install : install markdownlint using `npm -g` command.
   - markdownlint         : run markdownlint command with given args.

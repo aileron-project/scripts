@@ -5,10 +5,11 @@ REQUIREMENTS:
   - qemu : QEMU User space emulator must be available for `go-test-qemu` target.
 
 TARGETS:
-  - go-test-help : show help message.
-  - go-test      : run go test.
-  - go-test-bin  : generate test binary.
-  - go-test-qemu : run go test using qemu emulator.
+  - <TARGET>-usage : show the <TARGET> usage.
+  - go-test-help   : show help message.
+  - go-test        : run go test.
+  - go-test-bin    : generate test binary.
+  - go-test-qemu   : run go test using qemu emulator.
 
 VARIABLES [default value]:
   - GO_CMD           : go command. [go]

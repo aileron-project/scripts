@@ -5,11 +5,12 @@ REQUIREMENTS:
   - go    : `go` command must be available for `shfmt-install`.
 
 TARGETS:
-  - shfmt-help    : show help message.
-  - shfmt         : run shfmt command with given args.
-  - shfmt-install : install shfmt using `go install`.
-  - shfmt-run     : run shfmt to format.
-  - shfmt-local   : shfmt-run for local env before push.
+  - <TARGET>-usage : show the <TARGET> usage.
+  - shfmt-help     : show help message.
+  - shfmt          : run shfmt command with given args.
+  - shfmt-install  : install shfmt using `go install`.
+  - shfmt-run      : run shfmt to format.
+  - shfmt-local    : shfmt-run for local env before push.
 
 VARIABLES [default value]:
   - GO_CMD        : go command used in shfmt-install. [go]

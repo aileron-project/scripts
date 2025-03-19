@@ -18,6 +18,9 @@ golangci
 GOLANGCI
 gomod
 gopkg
+govulcheck
+govulncheck
+GOVULNCHECK
 httpserver
 iconpatcher
 loong

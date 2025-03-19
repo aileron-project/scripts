@@ -5,6 +5,7 @@ REQUIREMENTS:
   - npm    : `npm` command must be available for `cspell-install`.
 
 TARGETS:
+  - <TARGET>-usage : show the <TARGET> usage.
   - cspell-help    : show help message.
   - cspell-install : install cspell using `npm -g`.
   - cspell         : run cspell command with given args.

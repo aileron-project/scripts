@@ -5,6 +5,7 @@ REQUIREMENTS:
   - go        : `go` command must be available for `protolint-install`.
 
 TARGETS:
+  - <TARGET>-usage    : show the <TARGET> usage.
   - protolint-help    : show help message.
   - protolint         : run protolint command with given args.
   - protolint-install : install protolint using `go install`.

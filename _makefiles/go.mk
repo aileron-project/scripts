@@ -4,10 +4,11 @@ REQUIREMENTS:
   - go : `go` command must be available.
 
 TARGETS:
-  - go-help : show help message.
-  - go      : run go command with given args.
-  - go-vet  : run `go vet`.
-  - go-fmt  : run `go fmt`.
+  - <TARGET>-usage : show the <TARGET> usage.
+  - go-help        : show help message.
+  - go             : run go command with given args.
+  - go-vet         : run `go vet`.
+  - go-fmt         : run `go fmt`.
 
 VARIABLES [default value]:
   - GO_CMD         : go command. [go]

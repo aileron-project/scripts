@@ -5,6 +5,7 @@ REQUIREMENTS:
   - npm      : `npm` command must be available for `prettier-install`.
 
 TARGETS:
+  - <TARGET>-usage   : show the <TARGET> usage.
   - prettier-help    : show help message.
   - prettier-install : install prettier using `npm -g`.
   - prettier         : run prettier command with given args.

@@ -5,10 +5,11 @@ REQUIREMENTS:
   - go    : `go` command must be available for `trivy-install`.
 
 TARGETS:
-  - trivy-help    : show help message.
-  - trivy         : run trivy command with given args.
-  - trivy-install : install trivy using `go install`.
-  - trivy-sbom    : generate sbom.
+  - <TARGET>-usage : show the <TARGET> usage.
+  - trivy-help     : show help message.
+  - trivy          : run trivy command with given args.
+  - trivy-install  : install trivy using `go install`.
+  - trivy-sbom     : generate sbom.
 
 VARIABLES [default value]:
   - GO_CMD            : go command used in trivy-install. [go]

@@ -4,8 +4,9 @@ REQUIREMENTS:
   - go : `go` command must be available.
 
 TARGETS:
-  - go-build-help : show help message.
-  - go-build      : build binary.
+  - <TARGET>-usage : show the <TARGET> usage.
+  - go-build-help  : show help message.
+  - go-build       : build binary.
 
 VARIABLES [default value]:
   - GO_CMD           : go command. [go]
