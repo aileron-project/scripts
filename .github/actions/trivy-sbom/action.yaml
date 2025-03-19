@@ -2,6 +2,10 @@ name: Trivy SBOM
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running aquasecurity/setup-trivy"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make trivy-sbom"
     required: false
@@ -15,6 +19,7 @@ runs:
   using: "composite"
   steps:
     - uses: aquasecurity/setup-trivy@v0.2.2
+      if: ${{ ! inputs.skip-setup }}
       with:
         version: latest
     - shell: bash

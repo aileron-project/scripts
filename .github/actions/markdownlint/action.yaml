@@ -2,6 +2,10 @@ name: Markdownlint
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running actions/setup-node"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make markdownlint-run"
     required: false
@@ -10,5 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/setup-node@v4
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make markdownlint-run ARGS="${{ inputs.args }}"

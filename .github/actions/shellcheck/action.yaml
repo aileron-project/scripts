@@ -2,6 +2,10 @@ name: Check Shell Script
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip setting up shfmt"
+    required: false
+    default: 'false'
   version:
     description: "shellcheck version to install"
     required: false
@@ -15,6 +19,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
+      if: ${{ ! inputs.skip-setup }}
       env:
         VERSION: ${{ inputs.version }}
       run: |

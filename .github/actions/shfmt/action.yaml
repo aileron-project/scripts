@@ -2,6 +2,10 @@ name: Format Shell Script
 description: ""
 
 inputs:
+  skip-setup:
+    description: "skip running mfinelli/setup-shfmt"
+    required: false
+    default: 'false'
   args:
     description: "additional args for make shfmt-run"
     required: false
@@ -11,5 +15,6 @@ runs:
   using: "composite"
   steps:
     - uses: mfinelli/setup-shfmt@v3
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make shfmt-run SHFMT_CMD=shfmt ARGS="${{ inputs.args }}"
