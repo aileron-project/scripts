@@ -16,6 +16,7 @@ VARIABLES [default value]:
   - GO_LICENSES_CMD           : go-licenses command. [$$(GOBIN)go-licenses]
   - GO_LICENSES_VERSION       : go-licenses version to install. [latest]
   - GO_LICENSES_TARGET        : target for check and report. [./...]
+  - GO_LICENSES_OUTPUT        : license list output file. [_output/go-licenses.csv]
   - GO_LICENSES_OPTION_CHECK  : command line option for check. [--allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause]
   - GO_LICENSES_OPTION_REPORT : command line option for report. []
 
@@ -30,6 +31,8 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                        |-- Go Project
+  ├─ _output/              |
+  │  └─ go-licenses.csv    |-- Default licenses output 
   ├─ scripts/              |-- Git submodule
   │  └─ _makefiles/        |
   │     └─ go-licenses.mk  |
@@ -49,6 +52,7 @@ GO_CMD ?= go
 GO_LICENSES_CMD ?= $(GOBIN)go-licenses
 GO_LICENSES_VERSION ?= latest
 GO_LICENSES_TARGET ?= ./...
+GO_LICENSES_OUTPUT ?= _output/go-licenses.csv
 GO_LICENSES_OPTION_CHECK ?= --allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause
 GO_LICENSES_OPTION_REPORT ?= 
 
@@ -104,7 +108,7 @@ go-licenses: go-licenses-install
 go-licenses-run-usage:
 	# Usage : make go-licenses-run ARGS=""
 	# Exec  : $$(GO_LICENSES_CMD) check $$(ARGS) $$(GO_LICENSES_OPTION_CHECK) $$(GO_LICENSES_TARGET)
-	#         $$(GO_LICENSES_CMD) report $$(ARGS) $$(GO_LICENSES_OPTION_REPORT) $$(GO_LICENSES_TARGET)
+	#         $$(GO_LICENSES_CMD) report $$(ARGS) $$(GO_LICENSES_OPTION_REPORT) $$(GO_LICENSES_TARGET) > $$(GO_LICENSES_OUTPUT)
 	# Desc  : Check licenses.
 	# Examples:
 	#   - make go-licenses-run
@@ -113,9 +117,9 @@ go-licenses-run-usage:
 .PHONY: go-licenses-run
 go-licenses-run: go-licenses-install
 	$(GO_LICENSES_CMD) check $(ARGS) $(GO_LICENSES_OPTION_CHECK) $(GO_LICENSES_TARGET)
-	$(GO_LICENSES_CMD) report $(ARGS) $(GO_LICENSES_OPTION_REPORT) $(GO_LICENSES_TARGET) > go-licenses.tmp
+	@mkdir -p $(dir $(GO_LICENSES_OUTPUT))
+	$(GO_LICENSES_CMD) report $(ARGS) $(GO_LICENSES_OPTION_REPORT) $(GO_LICENSES_TARGET) > $(GO_LICENSES_OUTPUT)
 	@echo ================================================================================
-	@cat go-licenses.tmp
+	@cat $(GO_LICENSES_OUTPUT)
 	@echo ================================================================================
-	@rm -f go-licenses.tmp
 #______________________________________________________________________________#

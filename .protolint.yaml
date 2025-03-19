@@ -44,7 +44,7 @@ lint:
       max_chars: 120
       tab_chars: 2
     indent:
-      style: 4
+      style: 2
       not_insert_newline: false
     file_names_lower_snake_case:
       excludes: []

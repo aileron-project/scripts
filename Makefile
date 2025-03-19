@@ -14,6 +14,7 @@ include _makefiles/go-build.mk
 include _makefiles/go-licenses.mk
 include _makefiles/go-test.mk
 include _makefiles/go.mk
+include _makefiles/goda.mk
 include _makefiles/golangci-lint.mk
 include _makefiles/govulncheck.mk
 include _makefiles/markdownlint.mk

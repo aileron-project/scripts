@@ -1,0 +1,23 @@
+name: Goda Dependency Graph
+description: ""
+
+inputs:
+  args:
+    description: "additional args for make goda-run"
+    required: false
+    default: ""
+  artifact-path:
+    description: "dependency graph artifact path"
+    required: false
+    default: "_output/*graph*"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ts-graphviz/setup-graphviz@v2
+    - shell: bash
+      run: make goda-run ARGS="${{ inputs.args }}"
+    - uses: actions/upload-artifact@v4
+      with:
+        name: dependency-graph
+        path: ${{ inputs.artifact-path }}
