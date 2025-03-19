@@ -40,7 +40,7 @@ markdownlint-help:
 ################################################################################
 
 
-MARKDOWNLINT_CMD ?= markdownlint
+MARKDOWNLINT_CMD ?= markdownlint-cli2
 MARKDOWNLINT_VERSION ?= latest
 MARKDOWNLINT_TARGET ?= ./
 MARKDOWNLINT_OPTION ?=
@@ -62,10 +62,12 @@ markdownlint-install-usage:
 markdownlint-install:
 ifeq ("markdownlint-install","$(MAKECMDGOALS)")
 	npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
 	npm install -g "markdownlint-cli2@$(MARKDOWNLINT_VERSION)"
 else
 ifeq (,$(shell which $(MARKDOWNLINT_CMD) 2>/dev/null))
 	npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
 	npm install -g "markdownlint-cli2@$(MARKDOWNLINT_VERSION)"
 endif
 endif
