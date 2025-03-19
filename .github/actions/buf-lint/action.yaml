@@ -19,8 +19,8 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-      if: ${{ inputs.skip-checkout != "false" }}
+      if: ${{ ! inputs.skip-checkout }}
     - uses: .github/actions/setup-go@main
-      if: ${{ inputs.skip-setup != "false" }}
+      if: ${{ ! inputs.skip-setup }}
     - shell: bash
       run: make buf-lint ARGS="${{ inputs.args }}"
