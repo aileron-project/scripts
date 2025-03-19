@@ -27,14 +27,16 @@ include _makefiles/trivy.mk
 include _makefiles/util.mk
 
 
+LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run
+LOCAL_CHECKS += go-licenses-run
 LOCAL_CHECKS += golangci-lint-run
+LOCAL_CHECKS += govulncheck-run
 LOCAL_CHECKS += markdownlint-run
 LOCAL_CHECKS += prettier-run
 LOCAL_CHECKS += protolint-run
 LOCAL_CHECKS += scanoss-run
 LOCAL_CHECKS += shellcheck-run
-LOCAL_CHECKS += shfmt-run
 LOCAL_CHECKS += shfmt-run
 
 .PHONY: local-check
@@ -42,5 +44,6 @@ local-check: $(LOCAL_CHECKS)
 
 .PHONY: local-format
 local-format:
+	$(MAKE) buf-format ARGS="--write"
 	$(MAKE) go-fmt ARGS="-w"
 	$(MAKE) prettier-run ARGS="--write"
