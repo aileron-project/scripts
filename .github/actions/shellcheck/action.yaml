@@ -3,7 +3,7 @@ description: ""
 
 inputs:
   skip-setup:
-    description: "skip setting up shfmt"
+    description: "skip setting up shellcheck"
     required: false
     default: 'false'
   version:
@@ -23,6 +23,10 @@ runs:
       env:
         VERSION: ${{ inputs.version }}
       run: |
+        echo "#$%&%$#$%%#$%$#$%"
+        echo "================================================"
+        pwd
+        ls -la
         baseurl="https://github.com/koalaman/shellcheck/releases/download"
         curl -Lo "shellcheck.tar.xz" "${baseurl}/${VERSION}/shellcheck-${VERSION}.linux.x86_64.tar.xz"
         tar -xf "shellcheck.tar.xz"
