@@ -122,6 +122,7 @@ goda-run-usage:
 
 .PHONY: goda-run
 goda-run: goda-install
+	@mkdir -p $(dir $(GODA_OUTPUT))
 	$(GODA_CMD) graph $(ARGS) $(GODA_OPTION) $(GODA_TARGET) > $(basename $(GODA_OUTPUT)).dot
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tsvg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).svg
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tpng $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).png
