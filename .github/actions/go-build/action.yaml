@@ -37,5 +37,5 @@ runs:
         GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}"
     - uses: actions/upload-artifact@v4
       with:
-        name: go-build-${{ inputs.go-os }}-${{ inputs.go-arch }}${{ inputs.go-arm }}
+        name: ${{ inputs.go-os }}-${{ inputs.go-arch }}${{ inputs.go-arm }}
         path: ${{ inputs.artifact-path }}
