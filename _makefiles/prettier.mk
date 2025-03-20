@@ -39,8 +39,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: prettier-help
 prettier-help:
-  $(info $(prettier.mk))
-  @echo ""
+	$(info $(prettier.mk))
+	@echo ""
 ################################################################################
 
 
@@ -55,20 +55,20 @@ PRETTIER_OPTION ?= --check
 #                                                                              #
 .PHONY: prettier-install-usage
 prettier-install-usage:
-  # Usage : make prettier-install ARGS=""
-  # Exec  : npm install -g "prettier@$$(PRETTIER_VERSION)"
-  # Desc  : Install prettier using `npm -g`.
-  # Examples:
-  #   - make prettier-install
-  #   - make prettier-install PRETTIER_VERSION="next"
+	# Usage : make prettier-install ARGS=""
+	# Exec  : npm install -g "prettier@$$(PRETTIER_VERSION)"
+	# Desc  : Install prettier using `npm -g`.
+	# Examples:
+	#   - make prettier-install
+	#   - make prettier-install PRETTIER_VERSION="next"
 
 .PHONY: prettier-install
 prettier-install:
 ifeq ("prettier-install","$(MAKECMDGOALS)")
-  npm install -g "prettier@$(PRETTIER_VERSION)"
+	npm install -g "prettier@$(PRETTIER_VERSION)"
 else
 ifeq (,$(shell which $(PRETTIER_CMD) 2>/dev/null))
-  npm install -g "prettier@$(PRETTIER_VERSION)"
+	npm install -g "prettier@$(PRETTIER_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -79,16 +79,16 @@ endif
 #                                                                              #
 .PHONY: prettier-usage
 prettier-usage:
-  # Usage : make prettier ARGS=""
-  # Exec  : $$(PRETTIER_CMD) $$(ARGS)
-  # Desc  : Run prettier with given arguments.
-  # Examples:
-  #   - make prettier ARGS="--version"
-  #   - make prettier ARGS="--help"
+	# Usage : make prettier ARGS=""
+	# Exec  : $$(PRETTIER_CMD) $$(ARGS)
+	# Desc  : Run prettier with given arguments.
+	# Examples:
+	#   - make prettier ARGS="--version"
+	#   - make prettier ARGS="--help"
 
 .PHONY: prettier
 prettier: prettier-install
-  $(PRETTIER_CMD) $(ARGS)
+	$(PRETTIER_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -97,14 +97,14 @@ prettier: prettier-install
 #                                                                              #
 .PHONY: prettier-run-usage
 prettier-run-usage:
-  # Usage : make prettier-run ARGS=""
-  # Exec  : $$(PRETTIER_CMD) $$(ARGS) $$(PRETTIER_OPTION) $$(PRETTIER_TARGET)
-  # Desc  : Run prettier for the specified targets.
-  # Examples:
-  #   - make prettier-run
-  #   - make prettier-run ARGS="--write"
+	# Usage : make prettier-run ARGS=""
+	# Exec  : $$(PRETTIER_CMD) $$(ARGS) $$(PRETTIER_OPTION) $$(PRETTIER_TARGET)
+	# Desc  : Run prettier for the specified targets.
+	# Examples:
+	#   - make prettier-run
+	#   - make prettier-run ARGS="--write"
 
 .PHONY: prettier-run
 prettier-run: prettier-install
-  $(PRETTIER_CMD) $(ARGS) $(PRETTIER_OPTION) $(PRETTIER_TARGET)
+	$(PRETTIER_CMD) $(ARGS) $(PRETTIER_OPTION) $(PRETTIER_TARGET)
 #______________________________________________________________________________#

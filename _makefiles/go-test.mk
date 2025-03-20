@@ -21,7 +21,7 @@ VARIABLES [default value]:
 REFERENCES:
   - https://pkg.go.dev/cmd/go
   - https://pkg.go.dev/cmd/go/internal/test
-  - https://pkg.go.dev/internal/platform
+	- https://pkg.go.dev/internal/platform
   - https://www.qemu.org/docs/master/user/main.html
 
 IDE INTEGRATIONS:
@@ -47,8 +47,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: go-test-help
 go-test-help:
-  $(info $(go-test.mk))
-  @echo ""
+	$(info $(go-test.mk))
+	@echo ""
 ################################################################################
 
 
@@ -102,30 +102,30 @@ GO_TEST_CMD += -coverprofile=$(GO_TEST_COVERAGE)
 
 .PHONY: go-test-usage
 go-test-usage:
-  # Usage : make go-test ARGS=""
-  # Exec  : $$(GO_CMD) test $$(GO_TEST_FLAGS) -tags="$$(GO_TEST_TAGS)" \
-  #         -coverprofile=$$(GO_TEST_COVERAGE) $$(ARGS) $$(GO_TEST_TARGET)
-  # Desc  : Test go packages.
-  # Examples:
-  #   - make go-test
-  #   - make go-test GO_TEST_TARGET=./foo/...
-  #   - make go-test GO_TEST_TAGS="integration"
+	# Usage : make go-test ARGS=""
+	# Exec  : $$(GO_CMD) test $$(GO_TEST_FLAGS) -tags="$$(GO_TEST_TAGS)" \
+	#         -coverprofile=$$(GO_TEST_COVERAGE) $$(ARGS) $$(GO_TEST_TARGET)
+	# Desc  : Test go packages.
+	# Examples:
+	#   - make go-test
+	#   - make go-test GO_TEST_TARGET=./foo/...
+	#   - make go-test GO_TEST_TAGS="integration"
 
 .PHONY: go-test
 go-test:
-  $(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
-  @mkdir -p $(dir $(GO_TEST_COVERAGE))
-  @for target in $(GO_TEST_TARGET); do \
-  echo ""; \
-  echo "INFO: Testing $$target"; \
-  $(GO_TEST_CMD) $(ARGS) $$target; \
-  done
+	$(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
+	@mkdir -p $(dir $(GO_TEST_COVERAGE))
+	@for target in $(GO_TEST_TARGET); do \
+	echo ""; \
+	echo "INFO: Testing $$target"; \
+	$(GO_TEST_CMD) $(ARGS) $$target; \
+	done
 ifneq ($(GO_TEST_COVERAGE),)
-  @$(GO_CMD) tool cover -html=$(GO_TEST_COVERAGE) -o $(basename $(GO_TEST_COVERAGE)).html
-  @$(GO_CMD) tool cover -func=$(GO_TEST_COVERAGE) -o $(basename $(GO_TEST_COVERAGE)).func.txt
-  @echo ================================================================================
-  @cat $(basename $(GO_TEST_COVERAGE)).func.txt
-  @echo ================================================================================
+	@$(GO_CMD) tool cover -html=$(GO_TEST_COVERAGE) -o $(basename $(GO_TEST_COVERAGE)).html
+	@$(GO_CMD) tool cover -func=$(GO_TEST_COVERAGE) -o $(basename $(GO_TEST_COVERAGE)).func.txt
+	@echo ================================================================================
+	@cat $(basename $(GO_TEST_COVERAGE)).func.txt
+	@echo ================================================================================
 endif
 #______________________________________________________________________________#
 
@@ -135,22 +135,22 @@ endif
 #                                                                              #
 .PHONY: go-test-qemu-usage
 go-test-qemu-usage:
-  # Usage : make go-test-qemu ARGS=""
-  # Exec  : -
-  # Desc  :  Test go packages using QEMU user space emulator.
-  # Examples:
-  #   - make go-test-qemu
-  #   - make go-test-qemu GO_TEST_TARGET=./foo/...
-  #   - make go-test-qemu GOARCH=arm64
-  #   - make go-test-qemu GO_TEST_TAGS="integration"
+	# Usage : make go-test-qemu ARGS=""
+	# Exec  : -
+	# Desc  :  Test go packages using QEMU user space emulator.
+	# Examples:
+	#   - make go-test-qemu
+	#   - make go-test-qemu GO_TEST_TARGET=./foo/...
+	#   - make go-test-qemu GOARCH=arm64
+	#   - make go-test-qemu GO_TEST_TAGS="integration"
 
 .PHONY: go-test-qemu
 go-test-qemu: 
-  $(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
-  @for target in $(QEMU_TARGET); do \
-  echo ""; \
-  echo "INFO: Testing $$target"; \
-  $(GO_TEST_CMD) $(ARGS) -c -o $$target $$target; \
-  find $$target -name "*.test" | xargs -i bash -c "cd $$target && $(qemu_cmd_$(GOARCH)) {}; rm -f {}"; \
-  done
+	$(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
+	@for target in $(QEMU_TARGET); do \
+	echo ""; \
+	echo "INFO: Testing $$target"; \
+	$(GO_TEST_CMD) $(ARGS) -c -o $$target $$target; \
+	find $$target -name "*.test" | xargs -i bash -c "cd $$target && $(qemu_cmd_$(GOARCH)) {}; rm -f {}"; \
+	done
 #______________________________________________________________________________#

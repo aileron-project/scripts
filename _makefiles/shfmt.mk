@@ -39,8 +39,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: shfmt-help
 shfmt-help:
-  $(info $(shfmt.mk))
-  @echo ""
+	$(info $(shfmt.mk))
+	@echo ""
 ################################################################################
 
 
@@ -56,21 +56,21 @@ SHFMT_OPTION ?= --diff
 #                                                                              #
 .PHONY: shfmt-install-usage
 shfmt-install-usage:
-  # Usage : make shfmt-install ARGS=""
-  # Exec  : $$(GO_CMD) install $$(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$$(SHFMT_VERSION)"
-  # Desc  : Install shfmt using `go install`.
-  # Examples:
-  #   - make shfmt-install
-  #   - make shfmt-install ARGS="-tags netgo"
-  #   - make shfmt-install SHFMT_VERSION="main"
+	# Usage : make shfmt-install ARGS=""
+	# Exec  : $$(GO_CMD) install $$(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$$(SHFMT_VERSION)"
+	# Desc  : Install shfmt using `go install`.
+	# Examples:
+	#   - make shfmt-install
+	#   - make shfmt-install ARGS="-tags netgo"
+	#   - make shfmt-install SHFMT_VERSION="main"
 
 .PHONY: shfmt-install
 shfmt-install:
 ifeq ("shfmt-install","$(MAKECMDGOALS)")
-  $(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
+	$(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
 else
 ifeq (,$(shell which $(SHFMT_CMD) 2>/dev/null))
-  $(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
+	$(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -81,16 +81,16 @@ endif
 #                                                                              #
 .PHONY: shfmt-usage
 shfmt-usage:
-  # Usage : make shfmt ARGS=""
-  # Exec  : $$(SHFMT_CMD) $$(ARGS)
-  # Desc  : Run shfmt with given arguments.
-  # Examples:
-  #   - make shfmt ARGS="--version"
-  #   - make shfmt ARGS="--help"
+	# Usage : make shfmt ARGS=""
+	# Exec  : $$(SHFMT_CMD) $$(ARGS)
+	# Desc  : Run shfmt with given arguments.
+	# Examples:
+	#   - make shfmt ARGS="--version"
+	#   - make shfmt ARGS="--help"
 
 .PHONY: shfmt
 shfmt: shfmt-install
-  $(SHFMT_CMD) $(ARGS)
+	$(SHFMT_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -99,17 +99,17 @@ shfmt: shfmt-install
 #                                                                              #
 .PHONY: shfmt-run-usage
 shfmt-run-usage:
-  # Usage : make shfmt-run ARGS=""
-  # Exec  : $$(SHFMT_CMD) $$(ARGS) $$(SHFMT_OPTION) $$(SHFMT_TARGET)
-  # Desc  : Run shfmt for the specified targets.
-  # Examples:
-  #   - make shfmt-run
-  #   - make shfmt-run ARGS="--write"
-  #   - make shfmt-run SHFMT_OPTION="--write"
+	# Usage : make shfmt-run ARGS=""
+	# Exec  : $$(SHFMT_CMD) $$(ARGS) $$(SHFMT_OPTION) $$(SHFMT_TARGET)
+	# Desc  : Run shfmt for the specified targets.
+	# Examples:
+	#   - make shfmt-run
+	#   - make shfmt-run ARGS="--write"
+	#   - make shfmt-run SHFMT_OPTION="--write"
 
 .PHONY: shfmt-run
 shfmt-run: shfmt-install
-  $(SHFMT_CMD) $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
+	$(SHFMT_CMD) $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
 #______________________________________________________________________________#
 
 
@@ -118,14 +118,14 @@ shfmt-run: shfmt-install
 #                                                                              #
 .PHONY: shfmt-local-usage
 shfmt-local-usage:
-  # Usage : make shfmt-local ARGS=""
-  # Exec  : $$(SHFMT_CMD) --write $$(ARGS) $$(SHFMT_OPTION) $$(SHFMT_TARGET)
-  # Desc  : Run shfmt and write diff for the specified targets.
-  # Examples:
-  #   - make shfmt-local
-  #   - make shfmt-local ARGS=""
+	# Usage : make shfmt-local ARGS=""
+	# Exec  : $$(SHFMT_CMD) --write $$(ARGS) $$(SHFMT_OPTION) $$(SHFMT_TARGET)
+	# Desc  : Run shfmt and write diff for the specified targets.
+	# Examples:
+	#   - make shfmt-local
+	#   - make shfmt-local ARGS=""
 
 .PHONY: shfmt-local
 shfmt-local: shfmt-install
-  $(SHFMT_CMD) --write $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
+	$(SHFMT_CMD) --write $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
 #______________________________________________________________________________#

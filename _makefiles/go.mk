@@ -42,8 +42,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: go-help
 go-help:
-  $(info $(go.mk))
-  @echo ""
+	$(info $(go.mk))
+	@echo ""
 ################################################################################
 
 
@@ -62,16 +62,16 @@ GO_FMT_OPTION ?= -l -e -s
 #                                                                              #
 .PHONY: go-usage
 go-usage:
-  # Usage : make go ARGS=""
-  # Exec  : $$(GO_CMD) $$(ARGS)
-  # Desc  : Run go with given arguments.
-  # Examples:
-  #   - make go ARGS="version"
-  #   - make go ARGS="help"
+	# Usage : make go ARGS=""
+	# Exec  : $$(GO_CMD) $$(ARGS)
+	# Desc  : Run go with given arguments.
+	# Examples:
+	#   - make go ARGS="version"
+	#   - make go ARGS="help"
 
 .PHONY: go
 go:
-  $(GO_CMD) $(ARGS)
+	$(GO_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -80,17 +80,17 @@ go:
 #                                                                              #
 .PHONY: go-vet-usage
 go-vet-usage:
-  # Usage : make go-vet ARGS=""
-  # Exec  : $$(GO_CMD) vet $$(ARGS) $$(GO_VET_OPTION) $$(GO_VET_TARGET)
-  # Desc  : Run go vet for the specified targets.
-  #         Run `go tool vet help` or `go help vet` to show help.
-  # Examples:
-  #   - make go-vet
-  #   - make go-vet ARGS=""
+	# Usage : make go-vet ARGS=""
+	# Exec  : $$(GO_CMD) vet $$(ARGS) $$(GO_VET_OPTION) $$(GO_VET_TARGET)
+	# Desc  : Run go vet for the specified targets.
+	#         Run `go tool vet help` or `go help vet` to show help.
+	# Examples:
+	#   - make go-vet
+	#   - make go-vet ARGS=""
 
 .PHONY: go-vet
 go-vet:
-  $(GO_CMD) vet $(ARGS) $(GO_VET_OPTION) $(GO_VET_TARGET)
+	$(GO_CMD) vet $(ARGS) $(GO_VET_OPTION) $(GO_VET_TARGET)
 #______________________________________________________________________________#
 
 
@@ -99,22 +99,22 @@ go-vet:
 #                                                                              #
 .PHONY: go-fmt-usage
 go-fmt-usage:
-  # Usage : make go-fmt ARGS=""
-  # Exec  : $$(GOFMT_CMD) $$(ARGS) $$(GO_FMT_OPTION) $$(GO_FMT_TARGET)
-  # Desc  : Run go fmt for the specified targets.
-  #         Run `gofmt --help` to show help.
-  # Examples:
-  #   - make go-fmt
-  #   - make go-fmt ARGS=""
-  #   - make go-fmt ARGS="-w"
+	# Usage : make go-fmt ARGS=""
+	# Exec  : $$(GOFMT_CMD) $$(ARGS) $$(GO_FMT_OPTION) $$(GO_FMT_TARGET)
+	# Desc  : Run go fmt for the specified targets.
+	#         Run `gofmt --help` to show help.
+	# Examples:
+	#   - make go-fmt
+	#   - make go-fmt ARGS=""
+	#   - make go-fmt ARGS="-w"
 
 .PHONY: go-fmt
 go-fmt:
-  $(GOFMT_CMD) $(ARGS) $(GO_FMT_OPTION) $(GO_FMT_TARGET) > gofmt.tmp
-  @cat gofmt.tmp 
-  @if [ ! -s gofmt.tmp ]; then \
-  rm -f gofmt.tmp; return 0; \
-  else \
-  rm -f gofmt.tmp; return 1; \
-  fi
+	$(GOFMT_CMD) $(ARGS) $(GO_FMT_OPTION) $(GO_FMT_TARGET) > gofmt.tmp
+	@cat gofmt.tmp 
+	@if [ ! -s gofmt.tmp ]; then \
+	rm -f gofmt.tmp; return 0; \
+	else \
+	rm -f gofmt.tmp; return 1; \
+	fi
 #______________________________________________________________________________#

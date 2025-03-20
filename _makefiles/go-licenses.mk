@@ -43,8 +43,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: go-licenses-help
 go-licenses-help:
-  $(info $(go-licenses.mk))
-  @echo ""
+	$(info $(go-licenses.mk))
+	@echo ""
 ################################################################################
 
 
@@ -62,21 +62,21 @@ GO_LICENSES_OPTION_REPORT ?=
 #                                                                              #
 .PHONY: go-licenses-install-usage
 go-licenses-install-usage:
-  # Usage : make go-licenses-install ARGS=""
-  # Exec  : $$(GO_CMD) install $$(ARGS) "github.com/google/go-licenses/v2@$$(GO_LICENSES_VERSION)"
-  # Desc  : Install go-licenses using `go install`.
-  # Examples:
-  #   - make go-licenses-install
-  #   - make go-licenses-install ARGS="-tags netgo"
-  #   - make go-licenses-install GO_LICENSES_VERSION="main"
+	# Usage : make go-licenses-install ARGS=""
+	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/google/go-licenses/v2@$$(GO_LICENSES_VERSION)"
+	# Desc  : Install go-licenses using `go install`.
+	# Examples:
+	#   - make go-licenses-install
+	#   - make go-licenses-install ARGS="-tags netgo"
+	#   - make go-licenses-install GO_LICENSES_VERSION="main"
 
 .PHONY: go-licenses-install
 go-licenses-install:
 ifeq ("go-licenses-install","$(MAKECMDGOALS)")
-  $(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
 else
 ifeq (,$(shell which $(GO_LICENSES_CMD) 2>/dev/null))
-  $(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -87,17 +87,17 @@ endif
 #                                                                              #
 .PHONY: go-licenses-usage
 go-licenses-usage:
-  # Usage : make go-licenses ARGS=""
-  # Exec  : $$(GO_LICENSES_CMD) $$(ARGS)
-  # Desc  : Run go-licenses with given arguments.
-  # Examples:
-  #   - make go-licenses ARGS="--help"
-  #   - make go-licenses ARGS="check --help"
-  #   - make go-licenses ARGS="report --help"
+	# Usage : make go-licenses ARGS=""
+	# Exec  : $$(GO_LICENSES_CMD) $$(ARGS)
+	# Desc  : Run go-licenses with given arguments.
+	# Examples:
+	#   - make go-licenses ARGS="--help"
+	#   - make go-licenses ARGS="check --help"
+	#   - make go-licenses ARGS="report --help"
 
 .PHONY: go-licenses
 go-licenses: go-licenses-install
-  $(GO_LICENSES_CMD) $(ARGS)
+	$(GO_LICENSES_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -106,20 +106,20 @@ go-licenses: go-licenses-install
 #                                                                              #
 .PHONY: go-licenses-run-usage
 go-licenses-run-usage:
-  # Usage : make go-licenses-run ARGS=""
-  # Exec  : $$(GO_LICENSES_CMD) check $$(ARGS) $$(GO_LICENSES_OPTION_CHECK) $$(GO_LICENSES_TARGET)
-  #         $$(GO_LICENSES_CMD) report $$(ARGS) $$(GO_LICENSES_OPTION_REPORT) $$(GO_LICENSES_TARGET) > $$(GO_LICENSES_OUTPUT)
-  # Desc  : Check licenses.
-  # Examples:
-  #   - make go-licenses-run
-  #   - make go-licenses-run ARGS=""
+	# Usage : make go-licenses-run ARGS=""
+	# Exec  : $$(GO_LICENSES_CMD) check $$(ARGS) $$(GO_LICENSES_OPTION_CHECK) $$(GO_LICENSES_TARGET)
+	#         $$(GO_LICENSES_CMD) report $$(ARGS) $$(GO_LICENSES_OPTION_REPORT) $$(GO_LICENSES_TARGET) > $$(GO_LICENSES_OUTPUT)
+	# Desc  : Check licenses.
+	# Examples:
+	#   - make go-licenses-run
+	#   - make go-licenses-run ARGS=""
 
 .PHONY: go-licenses-run
 go-licenses-run: go-licenses-install
-  $(GO_LICENSES_CMD) check $(ARGS) $(GO_LICENSES_OPTION_CHECK) $(GO_LICENSES_TARGET)
-  @mkdir -p $(dir $(GO_LICENSES_OUTPUT))
-  $(GO_LICENSES_CMD) report $(ARGS) $(GO_LICENSES_OPTION_REPORT) $(GO_LICENSES_TARGET) > $(GO_LICENSES_OUTPUT)
-  @echo ================================================================================
-  @cat $(GO_LICENSES_OUTPUT)
-  @echo ================================================================================
+	$(GO_LICENSES_CMD) check $(ARGS) $(GO_LICENSES_OPTION_CHECK) $(GO_LICENSES_TARGET)
+	@mkdir -p $(dir $(GO_LICENSES_OUTPUT))
+	$(GO_LICENSES_CMD) report $(ARGS) $(GO_LICENSES_OPTION_REPORT) $(GO_LICENSES_TARGET) > $(GO_LICENSES_OUTPUT)
+	@echo ================================================================================
+	@cat $(GO_LICENSES_OUTPUT)
+	@echo ================================================================================
 #______________________________________________________________________________#

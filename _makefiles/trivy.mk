@@ -42,8 +42,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: trivy-help
 trivy-help:
-  $(info $(trivy.mk))
-  @echo ""
+	$(info $(trivy.mk))
+	@echo ""
 ################################################################################
 
 
@@ -61,21 +61,21 @@ TRIVY_SBOM_OUTPUT ?= _output/sbom.json
 #                                                                              #
 .PHONY: trivy-install-usage
 trivy-install-usage:
-  # Usage : make trivy-install ARGS=""
-  # Exec  : $$(GO_CMD) install $$(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$$(TRIVY_VERSION)"
-  # Desc  : Install trivy using `go install`.
-  # Examples:
-  #   - make trivy-install
-  #   - make trivy-install ARGS="-tags netgo"
-  #   - make trivy-install TRIVY_VERSION="main"
+	# Usage : make trivy-install ARGS=""
+	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$$(TRIVY_VERSION)"
+	# Desc  : Install trivy using `go install`.
+	# Examples:
+	#   - make trivy-install
+	#   - make trivy-install ARGS="-tags netgo"
+	#   - make trivy-install TRIVY_VERSION="main"
 
 .PHONY: trivy-install
 trivy-install:
 ifeq ("trivy-install","$(MAKECMDGOALS)")
-  $(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
 else
 ifeq (,$(shell which $(TRIVY_CMD) 2>/dev/null))
-  $(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -86,17 +86,17 @@ endif
 #                                                                              #
 .PHONY: trivy-usage
 trivy-usage:
-  # Usage : make trivy ARGS=""
-  # Exec  : $$(TRIVY_CMD) $$(ARGS)
-  # Desc  : Run trivy with given arguments.
-  # Examples:
-  #   - make trivy ARGS="--version"
-  #   - make trivy ARGS="--help"
-  #   - make trivy ARGS="filesystem --help"
+	# Usage : make trivy ARGS=""
+	# Exec  : $$(TRIVY_CMD) $$(ARGS)
+	# Desc  : Run trivy with given arguments.
+	# Examples:
+	#   - make trivy ARGS="--version"
+	#   - make trivy ARGS="--help"
+	#   - make trivy ARGS="filesystem --help"
 
 .PHONY: trivy
 trivy: trivy-install
-  $(TRIVY_CMD) $(ARGS)
+	$(TRIVY_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -105,17 +105,17 @@ trivy: trivy-install
 #                                                                              #
 .PHONY: trivy-sbom-usage
 trivy-sbom-usage:
-  # Usage : make trivy-sbom ARGS=""
-  # Exec  : $$(TRIVY_CMD) filesystem -f $$(TRIVY_SBOM_FORMAT) -o $$(TRIVY_SBOM_OUTPUT) \
-  #         $$(ARGS) $$(TRIVY_SBOM_OPTION) $$(TRIVY_SBOM_TARGET)
-  # Desc  : Generate filesystem sbom.
-  # Examples:
-  #   - make trivy-sbom
-  #   - make trivy-sbom ARGS="--scanners vuln"
+	# Usage : make trivy-sbom ARGS=""
+	# Exec  : $$(TRIVY_CMD) filesystem -f $$(TRIVY_SBOM_FORMAT) -o $$(TRIVY_SBOM_OUTPUT) \
+	#         $$(ARGS) $$(TRIVY_SBOM_OPTION) $$(TRIVY_SBOM_TARGET)
+	# Desc  : Generate filesystem sbom.
+	# Examples:
+	#   - make trivy-sbom
+	#   - make trivy-sbom ARGS="--scanners vuln"
 
 .PHONY: trivy-sbom
 trivy-sbom: trivy-install
-  @mkdir -p $(dir $(TRIVY_SBOM_OUTPUT))
-  $(TRIVY_CMD) filesystem -f $(TRIVY_SBOM_FORMAT) -o $(TRIVY_SBOM_OUTPUT) \
-  $(ARGS) $(TRIVY_SBOM_OPTION) $(TRIVY_SBOM_TARGET)
+	@mkdir -p $(dir $(TRIVY_SBOM_OUTPUT))
+	$(TRIVY_CMD) filesystem -f $(TRIVY_SBOM_FORMAT) -o $(TRIVY_SBOM_OUTPUT) \
+	$(ARGS) $(TRIVY_SBOM_OPTION) $(TRIVY_SBOM_TARGET)
 #______________________________________________________________________________#

@@ -37,8 +37,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: scanoss-help
 scanoss-help:
-  $(info $(scanoss.mk))
-  @echo ""
+	$(info $(scanoss.mk))
+	@echo ""
 ################################################################################
 
 
@@ -54,21 +54,21 @@ SCANOSS_OPTION_INSPECT ?= copyleft
 #                                                                              #
 .PHONY: scanoss-install-usage
 scanoss-install-usage:
-  # Usage : make scanoss-install ARGS=""
-  # Exec  : pip install scanoss[fast_winnowing]
-  # Desc  : Install scanoss using `pip install`.
-  # Examples:
-  #   - make scanoss-install
-  #   - make scanoss-install ARGS=""
+	# Usage : make scanoss-install ARGS=""
+	# Exec  : pip install scanoss[fast_winnowing]
+	# Desc  : Install scanoss using `pip install`.
+	# Examples:
+	#   - make scanoss-install
+	#   - make scanoss-install ARGS=""
 
 .PHONY: scanoss-install
 scanoss-install:
 ifeq ("scanoss-install","$(MAKECMDGOALS)")
-  pip install scanoss[fast_winnowing]
+	pip install scanoss[fast_winnowing]
   # pip install scancode-toolkit
 else
 ifeq (,$(shell which $(SCANOSS_CMD) 2>/dev/null))
-  pip install scanoss[fast_winnowing]
+	pip install scanoss[fast_winnowing]
   # pip install scancode-toolkit
 endif
 endif
@@ -80,16 +80,16 @@ endif
 #                                                                              #
 .PHONY: scanoss-usage
 scanoss-usage:
-  # Usage : make scanoss ARGS=""
-  # Exec  : $$(SCANOSS_CMD) $$(ARGS)
-  # Desc  : Run scanoss with given arguments.
-  # Examples:
-  #   - make scanoss ARGS="--version"
-  #   - make scanoss ARGS="--help"
+	# Usage : make scanoss ARGS=""
+	# Exec  : $$(SCANOSS_CMD) $$(ARGS)
+	# Desc  : Run scanoss with given arguments.
+	# Examples:
+	#   - make scanoss ARGS="--version"
+	#   - make scanoss ARGS="--help"
 
 .PHONY: scanoss
 scanoss: scanoss-install
-  $(SCANOSS_CMD) $(ARGS)
+	$(SCANOSS_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -98,17 +98,17 @@ scanoss: scanoss-install
 #                                                                              #
 .PHONY: scanoss-run-usage
 scanoss-run-usage:
-  # Usage : make scanoss-run ARGS=""
-  # Exec  : $$(SCANOSS_CMD) scan $$(ARGS) $$(SCANOSS_OPTION_SCAN) -o $$(SCANOSS_OUTPUT) $$(SCANOSS_TARGET)
-  #         $$(SCANOSS_CMD) inspect $$(SCANOSS_OPTION_INSPECT)  -i $$(SCANOSS_OUTPUT) -q | grep "{}"
-  # Desc  : Run scanning license.
-  # Examples:
-  #   - make scanoss-run
-  #   - make scanoss-run ARGS=""
+	# Usage : make scanoss-run ARGS=""
+	# Exec  : $$(SCANOSS_CMD) scan $$(ARGS) $$(SCANOSS_OPTION_SCAN) -o $$(SCANOSS_OUTPUT) $$(SCANOSS_TARGET)
+	#         $$(SCANOSS_CMD) inspect $$(SCANOSS_OPTION_INSPECT)  -i $$(SCANOSS_OUTPUT) -q | grep "{}"
+	# Desc  : Run scanning license.
+	# Examples:
+	#   - make scanoss-run
+	#   - make scanoss-run ARGS=""
 
 .PHONY: scanoss-run
 scanoss-run: scanoss-install
-  mkdir -p $(dir $(SCANOSS_OUTPUT))
-  $(SCANOSS_CMD) scan $(ARGS) $(SCANOSS_OPTION_SCAN) -o $(SCANOSS_OUTPUT) $(SCANOSS_TARGET)
-  $(SCANOSS_CMD) inspect $(SCANOSS_OPTION_INSPECT)  -i $(SCANOSS_OUTPUT) -q | grep "{}"
+	mkdir -p $(dir $(SCANOSS_OUTPUT))
+	$(SCANOSS_CMD) scan $(ARGS) $(SCANOSS_OPTION_SCAN) -o $(SCANOSS_OUTPUT) $(SCANOSS_TARGET)
+	$(SCANOSS_CMD) inspect $(SCANOSS_OPTION_INSPECT)  -i $(SCANOSS_OUTPUT) -q | grep "{}"
 #______________________________________________________________________________#

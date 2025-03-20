@@ -36,8 +36,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: markdownlint-help
 markdownlint-help:
-  $(info $(markdownlint.mk))
-  @echo ""
+	$(info $(markdownlint.mk))
+	@echo ""
 ################################################################################
 
 
@@ -52,23 +52,23 @@ MARKDOWNLINT_OPTION ?=
 #                                                                              #
 .PHONY: markdownlint-install-usage
 markdownlint-install-usage:
-  # Usage : make markdownlint-install ARGS=""
-  # Exec  : npm install -g "markdownlint@$$(MARKDOWNLINT_VERSION)"
-  #         npm install -g "markdownlint-cli@$$(MARKDOWNLINT_VERSION)"
-  # Desc  : Install markdownlint using `npm -g`.
-  # Examples:
-  #   - make markdownlint-install
-  #   - make markdownlint-install MARKDOWNLINT_VERSION="next"
+	# Usage : make markdownlint-install ARGS=""
+	# Exec  : npm install -g "markdownlint@$$(MARKDOWNLINT_VERSION)"
+	#         npm install -g "markdownlint-cli@$$(MARKDOWNLINT_VERSION)"
+	# Desc  : Install markdownlint using `npm -g`.
+	# Examples:
+	#   - make markdownlint-install
+	#   - make markdownlint-install MARKDOWNLINT_VERSION="next"
 
 .PHONY: markdownlint-install
 markdownlint-install:
 ifeq ("markdownlint-install","$(MAKECMDGOALS)")
-  npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
-  npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
 else
 ifeq (,$(shell which $(MARKDOWNLINT_CMD) 2>/dev/null))
-  npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
-  npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint@$(MARKDOWNLINT_VERSION)"
+	npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -79,16 +79,16 @@ endif
 #                                                                              #
 .PHONY: markdownlint-usage
 markdownlint-usage:
-  # Usage : make markdownlint ARGS=""
-  # Exec  : $$(MARKDOWNLINT_CMD) $$(ARGS)
-  # Desc  : Run markdownlint with given arguments.
-  # Examples:
-  #   - make markdownlint ARGS="--version"
-  #   - make markdownlint ARGS="--help"
+	# Usage : make markdownlint ARGS=""
+	# Exec  : $$(MARKDOWNLINT_CMD) $$(ARGS)
+	# Desc  : Run markdownlint with given arguments.
+	# Examples:
+	#   - make markdownlint ARGS="--version"
+	#   - make markdownlint ARGS="--help"
 
 .PHONY: markdownlint
 markdownlint: markdownlint-install
-  $(MARKDOWNLINT_CMD) $(ARGS)
+	$(MARKDOWNLINT_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -97,14 +97,14 @@ markdownlint: markdownlint-install
 #                                                                              #
 .PHONY: markdownlint-run-usage
 markdownlint-run-usage:
-  # Usage : make markdownlint-run ARGS=""
-  # Exec  : $$(MARKDOWNLINT_CMD) $$(ARGS) $$(MARKDOWNLINT_OPTION) $$(MARKDOWNLINT_TARGET)
-  # Desc  : Run markdownlint for the specified targets.
-  # Examples:
-  #   - make markdownlint-run
-  #   - make markdownlint-run ARGS="--quiet"
+	# Usage : make markdownlint-run ARGS=""
+	# Exec  : $$(MARKDOWNLINT_CMD) $$(ARGS) $$(MARKDOWNLINT_OPTION) $$(MARKDOWNLINT_TARGET)
+	# Desc  : Run markdownlint for the specified targets.
+	# Examples:
+	#   - make markdownlint-run
+	#   - make markdownlint-run ARGS="--quiet"
 
 .PHONY: markdownlint-run
 markdownlint-run: markdownlint-install
-  $(MARKDOWNLINT_CMD) $(ARGS) $(MARKDOWNLINT_OPTION) $(MARKDOWNLINT_TARGET)
+	$(MARKDOWNLINT_CMD) $(ARGS) $(MARKDOWNLINT_OPTION) $(MARKDOWNLINT_TARGET)
 #______________________________________________________________________________#

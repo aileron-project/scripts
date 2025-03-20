@@ -44,8 +44,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: buf-help
 buf-help:
-  $(info $(buf.mk))
-  @echo ""
+	$(info $(buf.mk))
+	@echo ""
 ################################################################################
 
 
@@ -62,21 +62,21 @@ BUF_GENERATE_OPTION ?= --include-imports
 #                                                                              #
 .PHONY: buf-install-usage
 buf-install-usage:
-  # Usage : make buf-install ARGS=""
-  # Exec  : $$(GO_CMD) install $$(ARGS) "github.com/bufbuild/buf/cmd/buf@$$(BUF_VERSION)"
-  # Desc  : Install buf using `go install`.
-  # Examples:
-  #   - make buf-install
-  #   - make buf-install ARGS="-tags netgo"
-  #   - make buf-install BUF_VERSION="main"
+	# Usage : make buf-install ARGS=""
+	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/bufbuild/buf/cmd/buf@$$(BUF_VERSION)"
+	# Desc  : Install buf using `go install`.
+	# Examples:
+	#   - make buf-install
+	#   - make buf-install ARGS="-tags netgo"
+	#   - make buf-install BUF_VERSION="main"
 
 .PHONY: buf-install
 buf-install:
 ifeq ("buf-install","$(MAKECMDGOALS)")
-  $(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
 else
 ifeq (,$(shell which $(BUF_CMD) 2>/dev/null))
-  $(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -87,16 +87,16 @@ endif
 #                                                                              #
 .PHONY: buf-usage
 buf-usage:
-  # Usage : make buf ARGS=""
-  # Exec  : $$(BUF_CMD) $$(ARGS)
-  # Desc  : Run buf with given arguments.
-  # Examples:
-  #   - make buf ARGS="--version"
-  #   - make buf ARGS="--help"
+	# Usage : make buf ARGS=""
+	# Exec  : $$(BUF_CMD) $$(ARGS)
+	# Desc  : Run buf with given arguments.
+	# Examples:
+	#   - make buf ARGS="--version"
+	#   - make buf ARGS="--help"
 
 .PHONY: buf
 buf: buf-install
-  $(BUF_CMD) $(ARGS)
+	$(BUF_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -105,16 +105,16 @@ buf: buf-install
 #                                                                              #
 .PHONY: buf-lint-usage
 buf-lint-usage:
-  # Usage : make buf-lint ARGS=""
-  # Exec  : $$(BUF_CMD) lint $$(ARGS) $$(BUF_LINT_OPTION)
-  # Desc  : Run buf lint.
-  # Examples:
-  #   - make buf-lint
-  #   - make buf-lint ARGS=""
+	# Usage : make buf-lint ARGS=""
+	# Exec  : $$(BUF_CMD) lint $$(ARGS) $$(BUF_LINT_OPTION)
+	# Desc  : Run buf lint.
+	# Examples:
+	#   - make buf-lint
+	#   - make buf-lint ARGS=""
 
 .PHONY: buf-lint
 buf-lint: buf-install
-  $(BUF_CMD) lint $(ARGS) $(BUF_LINT_OPTION)
+	$(BUF_CMD) lint $(ARGS) $(BUF_LINT_OPTION)
 #______________________________________________________________________________#
 
 
@@ -123,16 +123,16 @@ buf-lint: buf-install
 #                                                                              #
 .PHONY: buf-format-usage
 buf-format-usage:
-  # Usage : make buf-format ARGS=""
-  # Exec  : $$(BUF_CMD) format $$(ARGS) $$(BUF_FORMAT_OPTION)
-  # Desc  : Run buf format.
-  # Examples:
-  #   - make buf-format
-  #   - make buf-format ARGS="--write"
+	# Usage : make buf-format ARGS=""
+	# Exec  : $$(BUF_CMD) format $$(ARGS) $$(BUF_FORMAT_OPTION)
+	# Desc  : Run buf format.
+	# Examples:
+	#   - make buf-format
+	#   - make buf-format ARGS="--write"
 
 .PHONY: buf-format
 buf-format: buf-install
-  $(BUF_CMD) format $(ARGS) $(BUF_FORMAT_OPTION)
+	$(BUF_CMD) format $(ARGS) $(BUF_FORMAT_OPTION)
 #______________________________________________________________________________#
 
 
@@ -141,14 +141,14 @@ buf-format: buf-install
 #                                                                              #
 .PHONY: buf-generate-usage
 buf-generate-usage:
-  # Usage : make buf-generate ARGS=""
-  # Exec  : $$(BUF_CMD) generate $$(ARGS) $$(BUF_GENERATE_OPTION)
-  # Desc  : Run buf generate.
-  # Examples:
-  #   - make buf-generate
-  #   - make buf-generate ARGS=""
+	# Usage : make buf-generate ARGS=""
+	# Exec  : $$(BUF_CMD) generate $$(ARGS) $$(BUF_GENERATE_OPTION)
+	# Desc  : Run buf generate.
+	# Examples:
+	#   - make buf-generate
+	#   - make buf-generate ARGS=""
 
 .PHONY: buf-generate
 buf-generate: buf-install
-  $(BUF_CMD) generate $(ARGS) $(BUF_GENERATE_OPTION)
+	$(BUF_CMD) generate $(ARGS) $(BUF_GENERATE_OPTION)
 #______________________________________________________________________________#
