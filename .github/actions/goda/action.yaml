@@ -18,7 +18,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: ./.github/actions/setup-go
+    - uses: aileron-project/scripts/.github/actions/setup-go@main
       if: ${{ inputs.skip-setup != 'true' }}
     - uses: ts-graphviz/setup-graphviz@v2
       if: ${{ inputs.skip-setup != 'true' }}

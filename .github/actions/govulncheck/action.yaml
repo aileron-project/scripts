@@ -14,7 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: ./.github/actions/setup-go
+    - uses: aileron-project/scripts/.github/actions/setup-go@main
       if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
       run: make govulncheck-run ARGS="${{ inputs.args }}"
