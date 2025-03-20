@@ -1,0 +1,47 @@
+name: Package Build
+description: ""
+inputs:
+  skip-setup:
+    description: "skip running setup-go"
+    required: false
+    default: "false"
+  args:
+    description: "additional args for make nfpm-*"
+    required: false
+    default: ""
+  artifact-path:
+    description: "artifact path"
+    required: false
+    default: "_output/pkg/*"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: aileron-project/scripts/.github/actions/setup-go@main
+      if: ${{ inputs.skip-setup != 'true' }}
+    - shell: bash
+      run: ls -la _output/bin/
+    - shell: bash
+      run: |
+        echo 'deb [trusted=yes] https://repo.fury.io/goreleaser/ /' | sudo tee /etc/apt/sources.list.d/goreleaser.list
+        sudo apt-get update
+        sudo apt-get install -y nfpm
+    - shell: bash
+      run: |
+        export VERSION="${{github.ref_name}}"
+        make nfpm-rpm ARGS="${{ inputs.args }}" NFPM_RPM_ARCH="386 amd64 arm7 arm64 ppc64le riscv64 s390x"
+        make nfpm-deb ARGS="${{ inputs.args }}" NFPM_DEB_ARCH="386 amd64 arm7 arm64 ppc64le riscv64 s390x"
+        make nfpm-apk ARGS="${{ inputs.args }}" NFPM_APK_ARCH="386 amd64 arm7 arm64 ppc64le riscv64 s390x"
+        make nfpm-arch ARGS="${{ inputs.args }}" NFPM_ARCH_ARCH="amd64 arm7 arm64 riscv64"
+        ls -la ./_output/pkg/
+    - shell: bash
+      run: |
+        cd ./_output/pkg/
+        ls -la
+        sha256sum * > ./PKG_SHA256SUMS
+        sha1sum * > ./PKG_SHA1SUMS
+        md5sum * > ./PKG_MD5SUMS
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pkg-build-${{ inputs.go-os }}-${{ inputs.go-arch }}${{ inputs.go-arm }}
+        path: ${{ inputs.artifact-path }}

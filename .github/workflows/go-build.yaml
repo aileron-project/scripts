@@ -54,3 +54,12 @@ jobs:
           go-os: ${{ matrix.os }}
           go-arch: ${{ matrix.arch }}
           go-arm: ${{ matrix.arm }}
+
+  package:
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - uses: aileron-project/scripts/.github/actions/pkg-build@main
