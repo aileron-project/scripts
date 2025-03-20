@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/go-fmt@main
 
   license:
@@ -21,6 +23,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/go-licenses@main
 
   vet:
@@ -28,6 +32,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/go-vet@main
 
   lint:
@@ -35,6 +41,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/golangci-lint@main
 
   vulnerability:
@@ -42,4 +50,6 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/govulncheck@main

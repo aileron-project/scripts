@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/protolint@main
 
   buf-lint:
@@ -21,4 +23,6 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: aileron-project/scripts/.github/actions/buf-lint@main
