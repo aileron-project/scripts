@@ -1,3 +1,4 @@
+SHELL := /bin/bash -euo pipefail
 ################################################################################
 define go.mk
 REQUIREMENTS:
@@ -113,8 +114,8 @@ go-fmt:
 	$(GOFMT_CMD) $(ARGS) $(GO_FMT_OPTION) $(GO_FMT_TARGET) > gofmt.tmp
 	@cat gofmt.tmp 
 	@if [ ! -s gofmt.tmp ]; then \
-	rm -f gofmt.tmp; return 0; \
+	rm -f gofmt.tmp; exit 0; \
 	else \
-	rm -f gofmt.tmp; return 1; \
+	rm -f gofmt.tmp; exit 1; \
 	fi
 #______________________________________________________________________________#

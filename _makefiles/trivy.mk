@@ -1,3 +1,4 @@
+SHELL := /bin/bash -euo pipefail
 ################################################################################
 define trivy.mk
 REQUIREMENTS:

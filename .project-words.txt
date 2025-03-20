@@ -41,6 +41,7 @@ GOVULNCHECK
 graphviz
 httpserver
 iconpatcher
+jstemmer
 logr
 loong
 loov
@@ -60,6 +61,7 @@ osusergo
 ouput
 penwidth
 pidfile
+pipefail
 pkgs
 postinst
 postremove
