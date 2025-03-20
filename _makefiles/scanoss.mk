@@ -1,4 +1,4 @@
-SHELL := /bin/bash -euo pipefail
+SHELL := /bin/bash
 ################################################################################
 define scanoss.mk
 REQUIREMENTS:
@@ -111,5 +111,10 @@ scanoss-run-usage:
 scanoss-run: scanoss-install
 	mkdir -p $(dir $(SCANOSS_OUTPUT))
 	$(SCANOSS_CMD) scan $(ARGS) $(SCANOSS_OPTION_SCAN) -o $(SCANOSS_OUTPUT) $(SCANOSS_TARGET)
-	$(SCANOSS_CMD) inspect $(SCANOSS_OPTION_INSPECT)  -i $(SCANOSS_OUTPUT) -q | grep "{}"
+	$(SCANOSS_CMD) inspect $(SCANOSS_OPTION_INSPECT) -i $(SCANOSS_OUTPUT) -q -o scanoss.tmp
+	@if [ $(shell cat scanoss.tmp | grep "{}") == "{}" ]; then \
+	rm -f scanoss.tmp; exit 0; \
+	else \
+	rm -f scanoss.tmp; exit 1; \
+	fi
 #______________________________________________________________________________#

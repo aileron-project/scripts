@@ -38,6 +38,7 @@ IDE INTEGRATIONS:
 PROJECT STRUCTURE:
   /                        |-- Go project
   ├─ _output/              |
+  │  ├─ coverage.xml       |-- Default coverage output (by go-junit-report) 
   │  ├─ coverage.html      |-- Default coverage output 
   │  ├─ coverage.txt       |-- Default coverage output 
   │  └─ coverage.func.txt  |-- Default coverage output 
