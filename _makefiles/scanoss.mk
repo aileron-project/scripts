@@ -110,7 +110,7 @@ scanoss-run-usage:
 .PHONY: scanoss-run
 scanoss-run: scanoss-install
 	mkdir -p $(dir $(SCANOSS_OUTPUT))
-	# $(SCANOSS_CMD) scan $(ARGS) $(SCANOSS_OPTION_SCAN) -o $(SCANOSS_OUTPUT) $(SCANOSS_TARGET)
+	$(SCANOSS_CMD) scan $(ARGS) $(SCANOSS_OPTION_SCAN) -o $(SCANOSS_OUTPUT) $(SCANOSS_TARGET)
 	$(SCANOSS_CMD) inspect $(SCANOSS_OPTION_INSPECT) -i $(SCANOSS_OUTPUT) -q -o scanoss.tmp || true
 	@if cat scanoss.tmp | grep "{}"; then \
 	rm -f scanoss.tmp; exit 0; \
