@@ -116,7 +116,7 @@ go-test-install:
 ifeq ("go-test-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/jstemmer/go-junit-report/v2@$(GO_JUNIT_VERSION)"
 else
-ifeq (,$(shell which $(GO_LICENSES_CMD) 2>/dev/null))
+ifeq (,$(shell which $(GO_JUNIT_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/jstemmer/go-junit-report/v2@$(GO_JUNIT_VERSION)"
 endif
 endif
