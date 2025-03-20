@@ -20,7 +20,9 @@ runs:
     - uses: aileron-project/scripts/.github/actions/setup-go@main
       if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
-      run: ls -la _output/bin/
+      run: |
+        ls -la _output/bin/
+        ls -la _output/bin/linux-amd64/
     - shell: bash
       run: |
         echo 'deb [trusted=yes] https://repo.fury.io/goreleaser/ /' | sudo tee /etc/apt/sources.list.d/goreleaser.list
