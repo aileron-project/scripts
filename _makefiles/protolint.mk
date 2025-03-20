@@ -39,8 +39,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: protolint-help
 protolint-help:
-	$(info $(protolint.mk))
-	@echo ""
+  $(info $(protolint.mk))
+  @echo ""
 ################################################################################
 
 
@@ -56,21 +56,21 @@ PROTOLINT_OPTION ?=
 #                                                                              #
 .PHONY: protolint-install-usage
 protolint-install-usage:
-	# Usage : make protolint-install ARGS=""
-	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$$(PROTOLINT_VERSION)"
-	# Desc  : Install protolint using `go install`.
-	# Examples:
-	#   - make protolint-install
-	#   - make protolint-install ARGS="-tags netgo"
-	#   - make protolint-install PROTOLINT_VERSION="main"
+  # Usage : make protolint-install ARGS=""
+  # Exec  : $$(GO_CMD) install $$(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$$(PROTOLINT_VERSION)"
+  # Desc  : Install protolint using `go install`.
+  # Examples:
+  #   - make protolint-install
+  #   - make protolint-install ARGS="-tags netgo"
+  #   - make protolint-install PROTOLINT_VERSION="main"
 
 .PHONY: protolint-install
 protolint-install:
 ifeq ("protolint-install","$(MAKECMDGOALS)")
-	$(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
+  $(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
 else
 ifeq (,$(shell which $(PROTOLINT_CMD) 2>/dev/null))
-	$(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
+  $(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -81,15 +81,15 @@ endif
 #                                                                              #
 .PHONY: protolint-usage
 protolint-usage:
-	# Usage : make protolint ARGS=""
-	# Exec  : $$(PROTOLINT_CMD) $$(ARGS)
-	# Desc  : Run protolint with given arguments.
-	# Examples:
-	#   - make protolint ARGS="--help"
+  # Usage : make protolint ARGS=""
+  # Exec  : $$(PROTOLINT_CMD) $$(ARGS)
+  # Desc  : Run protolint with given arguments.
+  # Examples:
+  #   - make protolint ARGS="--help"
 
 .PHONY: protolint
 protolint: protolint-install
-	$(PROTOLINT_CMD) $(ARGS)
+  $(PROTOLINT_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -98,14 +98,14 @@ protolint: protolint-install
 #                                                                              #
 .PHONY: protolint-run-usage
 protolint-run-usage:
-	# Usage : make protolint-run ARGS=""
-	# Exec  : $$(PROTOLINT_CMD) $$(ARGS) $$(PROTOLINT_OPTION) $$(PROTOLINT_TARGET)
-	# Desc  : Run protolint for the specified targets.
-	# Examples:
-	#   - make protolint-run
-	#   - make protolint-run ARGS=""
+  # Usage : make protolint-run ARGS=""
+  # Exec  : $$(PROTOLINT_CMD) $$(ARGS) $$(PROTOLINT_OPTION) $$(PROTOLINT_TARGET)
+  # Desc  : Run protolint for the specified targets.
+  # Examples:
+  #   - make protolint-run
+  #   - make protolint-run ARGS=""
 
 .PHONY: protolint-run
 protolint-run: protolint-install
-	$(PROTOLINT_CMD) $(ARGS) $(PROTOLINT_OPTION) $(PROTOLINT_TARGET)
+  $(PROTOLINT_CMD) $(ARGS) $(PROTOLINT_OPTION) $(PROTOLINT_TARGET)
 #______________________________________________________________________________#

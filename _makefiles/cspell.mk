@@ -39,8 +39,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: cspell-help
 cspell-help:
-	$(info $(cspell.mk))
-	@echo ""
+  $(info $(cspell.mk))
+  @echo ""
 ################################################################################
 
 
@@ -55,21 +55,21 @@ CSPELL_OPTION ?= --quiet --words-only --unique
 #                                                                              #
 .PHONY: cspell-install-usage
 cspell-install-usage:
-	# Usage : make cspell-install ARGS=""
-	# Exec  : npm install -g "cspell@$$(CSPELL_VERSION)"
-	# Desc  : Install cspell using `npm -g`.
-	# Examples:
-	#   - make cspell-install
-	#   - make cspell-install ARGS=""
-	#   - make cspell-install CSPELL_VERSION="next"
+  # Usage : make cspell-install ARGS=""
+  # Exec  : npm install -g "cspell@$$(CSPELL_VERSION)"
+  # Desc  : Install cspell using `npm -g`.
+  # Examples:
+  #   - make cspell-install
+  #   - make cspell-install ARGS=""
+  #   - make cspell-install CSPELL_VERSION="next"
 
 .PHONY: cspell-install
 cspell-install:
 ifeq ("cspell-install","$(MAKECMDGOALS)")
-	npm install -g "cspell@$(CSPELL_VERSION)"
+  npm install -g "cspell@$(CSPELL_VERSION)"
 else
 ifeq (,$(shell which $(CSPELL_CMD) 2>/dev/null))
-	npm install -g "cspell@$(CSPELL_VERSION)"
+  npm install -g "cspell@$(CSPELL_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -80,16 +80,16 @@ endif
 #                                                                              #
 .PHONY: cspell-usage
 cspell-usage:
-	# Usage : make cspell ARGS=""
-	# Exec  : $$(CSPELL_CMD) $$(ARGS)
-	# Desc  : Run cspell with given arguments.
-	# Examples:
-	#   - make cspell ARGS="--version"
-	#   - make cspell ARGS="--help"
+  # Usage : make cspell ARGS=""
+  # Exec  : $$(CSPELL_CMD) $$(ARGS)
+  # Desc  : Run cspell with given arguments.
+  # Examples:
+  #   - make cspell ARGS="--version"
+  #   - make cspell ARGS="--help"
 
 .PHONY: cspell
 cspell: cspell-install
-	$(CSPELL_CMD) $(ARGS)
+  $(CSPELL_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -98,14 +98,14 @@ cspell: cspell-install
 #                                                                              #
 .PHONY: cspell-run-usage
 cspell-run-usage:
-	# Usage : make cspell-run ARGS=""
-	# Exec  : $$(CSPELL_CMD) lint $$(ARGS) $$(CSPELL_OPTION) $$(CSPELL_TARGET)
-	# Desc  : Run spell check.
-	# Examples:
-	#   - make cspell
-	#   - make cspell ARGS=""
+  # Usage : make cspell-run ARGS=""
+  # Exec  : $$(CSPELL_CMD) lint $$(ARGS) $$(CSPELL_OPTION) $$(CSPELL_TARGET)
+  # Desc  : Run spell check.
+  # Examples:
+  #   - make cspell
+  #   - make cspell ARGS=""
 
 .PHONY: cspell-run
 cspell-run: cspell-install
-	$(CSPELL_CMD) lint $(ARGS) $(CSPELL_OPTION) $(CSPELL_TARGET)
+  $(CSPELL_CMD) lint $(ARGS) $(CSPELL_OPTION) $(CSPELL_TARGET)
 #______________________________________________________________________________#

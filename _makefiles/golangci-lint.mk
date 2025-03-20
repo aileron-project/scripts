@@ -41,8 +41,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: golangci-lint-help
 golangci-lint-help:
-	$(info $(golangci-lint.mk))
-	@echo ""
+  $(info $(golangci-lint.mk))
+  @echo ""
 ################################################################################
 
 
@@ -58,21 +58,21 @@ GOLANGCI_LINT_OPTION ?=
 #                                                                              #
 .PHONY: golangci-lint-install-usage
 golangci-lint-install-usage:
-	# Usage : make golangci-lint-install ARGS=""
-	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$$(GOLANGCI_LINT_VERSION)"
-	# Desc  : Install golangci-lint using `go install`.
-	# Examples:
-	#   - make golangci-lint-install
-	#   - make golangci-lint-install ARGS="-tags netgo"
-	#   - make golangci-lint-install GOLANGCI_LINT_VERSION="main"
+  # Usage : make golangci-lint-install ARGS=""
+  # Exec  : $$(GO_CMD) install $$(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$$(GOLANGCI_LINT_VERSION)"
+  # Desc  : Install golangci-lint using `go install`.
+  # Examples:
+  #   - make golangci-lint-install
+  #   - make golangci-lint-install ARGS="-tags netgo"
+  #   - make golangci-lint-install GOLANGCI_LINT_VERSION="main"
 
 .PHONY: golangci-lint-install
 golangci-lint-install:
 ifeq ("golangci-lint-install","$(MAKECMDGOALS)")
-	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
+  $(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
 else
 ifeq (,$(shell which $(GOLANGCI_LINT_CMD) 2>/dev/null))
-	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
+  $(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
 endif
 endif
 #______________________________________________________________________________#
@@ -83,16 +83,16 @@ endif
 #                                                                              #
 .PHONY: golangci-lint-usage
 golangci-lint-usage:
-	# Usage : make golangci-lint ARGS=""
-	# Exec  : $$(GOLANGCI_LINT_CMD) $$(ARGS)
-	# Desc  : Run golangci-lint with given arguments.
-	# Examples:
-	#   - make golangci-lint ARGS="--version"
-	#   - make golangci-lint ARGS="--help"
+  # Usage : make golangci-lint ARGS=""
+  # Exec  : $$(GOLANGCI_LINT_CMD) $$(ARGS)
+  # Desc  : Run golangci-lint with given arguments.
+  # Examples:
+  #   - make golangci-lint ARGS="--version"
+  #   - make golangci-lint ARGS="--help"
 
 .PHONY: golangci-lint
 golangci-lint: golangci-lint-install
-	$(GOLANGCI_LINT_CMD) $(ARGS)
+  $(GOLANGCI_LINT_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -101,14 +101,14 @@ golangci-lint: golangci-lint-install
 #                                                                              #
 .PHONY: golangci-lint-run-usage
 golangci-lint-run-usage:
-	# Usage : make golangci-lint-run ARGS=""
-	# Exec  : $$(GOLANGCI_LINT_CMD) run $$(ARGS) $$(GOLANGCI_LINT_OPTION) $$(GOLANGCI_LINT_TARGET)
-	# Desc  : Run golangci-lint for the specified targets.
-	# Examples:
-	#   - make golangci-lint-run
-	#   - make golangci-lint-run ARGS=""
+  # Usage : make golangci-lint-run ARGS=""
+  # Exec  : $$(GOLANGCI_LINT_CMD) run $$(ARGS) $$(GOLANGCI_LINT_OPTION) $$(GOLANGCI_LINT_TARGET)
+  # Desc  : Run golangci-lint for the specified targets.
+  # Examples:
+  #   - make golangci-lint-run
+  #   - make golangci-lint-run ARGS=""
 
 .PHONY: golangci-lint-run
 golangci-lint-run: golangci-lint-install
-	$(GOLANGCI_LINT_CMD) run $(ARGS) $(GOLANGCI_LINT_OPTION) $(GOLANGCI_LINT_TARGET)
+  $(GOLANGCI_LINT_CMD) run $(ARGS) $(GOLANGCI_LINT_OPTION) $(GOLANGCI_LINT_TARGET)
 #______________________________________________________________________________#

@@ -36,8 +36,8 @@ endef
 #------------------------------------------------------------------------------#
 .PHONY: shellcheck-help
 shellcheck-help:
-	$(info $(shellcheck.mk))
-	@echo ""
+  $(info $(shellcheck.mk))
+  @echo ""
 ################################################################################
 
 
@@ -51,16 +51,16 @@ SHELLCHECK_OPTION ?=
 #                                                                              #
 .PHONY: shellcheck-usage
 shellcheck-usage:
-	# Usage : make shellcheck ARGS=""
-	# Exec  : $$(SHELLCHECK_CMD) $$(ARGS)
-	# Desc  : Run shellcheck with given arguments.
-	# Examples:
-	#   - make shellcheck ARGS="--version"
-	#   - make shellcheck ARGS="--help"
+  # Usage : make shellcheck ARGS=""
+  # Exec  : $$(SHELLCHECK_CMD) $$(ARGS)
+  # Desc  : Run shellcheck with given arguments.
+  # Examples:
+  #   - make shellcheck ARGS="--version"
+  #   - make shellcheck ARGS="--help"
 
 .PHONY: shellcheck
 shellcheck:
-	$(SHELLCHECK_CMD) $(ARGS)
+  $(SHELLCHECK_CMD) $(ARGS)
 #______________________________________________________________________________#
 
 
@@ -69,14 +69,14 @@ shellcheck:
 #                                                                              #
 .PHONY: shellcheck-run-usage
 shellcheck-run-usage:
-	# Usage : make shellcheck-run ARGS=""
-	# Exec  : $$(SHELLCHECK_CMD) $$(ARGS) $$(SHELLCHECK_OPTION) $$(SHELLCHECK_TARGET)
-	# Desc  : Run shellcheck for the specified target.
-	# Examples:
-	#   - make shellcheck-run
-	#   - make shellcheck-run ARGS=""
+  # Usage : make shellcheck-run ARGS=""
+  # Exec  : $$(SHELLCHECK_CMD) $$(ARGS) $$(SHELLCHECK_OPTION) $$(SHELLCHECK_TARGET)
+  # Desc  : Run shellcheck for the specified target.
+  # Examples:
+  #   - make shellcheck-run
+  #   - make shellcheck-run ARGS=""
 
 .PHONY: shellcheck-run
 shellcheck-run:
-	$(SHELLCHECK_CMD) $(ARGS) $(SHELLCHECK_OPTION) $(SHELLCHECK_TARGET)
+  $(SHELLCHECK_CMD) $(ARGS) $(SHELLCHECK_OPTION) $(SHELLCHECK_TARGET)
 #______________________________________________________________________________#
