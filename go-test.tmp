@@ -1,0 +1,83 @@
+	github.com/aileron-project/scripts/cmd/alice		coverage: 0.0% of statements
+	github.com/aileron-project/scripts/cmd/bob		coverage: 0.0% of statements
+	github.com/aileron-project/scripts/cmd/hello		coverage: 0.0% of statements
+=== RUN   TestAdd
+=== PAUSE TestAdd
+=== RUN   TestSub
+=== PAUSE TestSub
+=== RUN   TestReadFile
+=== PAUSE TestReadFile
+=== CONT  TestAdd
+--- PASS: TestAdd (0.00s)
+=== CONT  TestSub
+=== CONT  TestReadFile
+--- PASS: TestSub (0.00s)
+--- PASS: TestReadFile (0.00s)
+=== RUN   FuzzReverse
+--- PASS: FuzzReverse (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+PASS
+coverage: 55.6% of statements
+ok  	github.com/aileron-project/scripts/pkg-bar	0.008s	coverage: 55.6% of statements
+=== RUN   TestMultiply
+=== PAUSE TestMultiply
+=== RUN   TestReadFile
+=== PAUSE TestReadFile
+=== CONT  TestMultiply
+=== CONT  TestReadFile
+--- PASS: TestMultiply (0.00s)
+--- PASS: TestReadFile (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-bar/barbar	0.008s	coverage: 100.0% of statements
+=== RUN   TestFuncXXX
+--- PASS: TestFuncXXX (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-bar/internal/xxx	0.005s	coverage: 100.0% of statements
+=== RUN   TestFuncYYY
+--- PASS: TestFuncYYY (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-bar/internal/yyy	0.005s	coverage: 100.0% of statements
+=== RUN   TestAdd
+=== PAUSE TestAdd
+=== RUN   TestSub
+=== PAUSE TestSub
+=== RUN   TestReadFile
+=== PAUSE TestReadFile
+=== CONT  TestAdd
+=== CONT  TestReadFile
+--- PASS: TestAdd (0.00s)
+=== CONT  TestSub
+--- PASS: TestSub (0.00s)
+--- PASS: TestReadFile (0.00s)
+=== RUN   FuzzReverse
+--- PASS: FuzzReverse (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+PASS
+coverage: 55.6% of statements
+ok  	github.com/aileron-project/scripts/pkg-foo	0.008s	coverage: 55.6% of statements
+=== RUN   TestMultiply
+=== PAUSE TestMultiply
+=== RUN   TestReadFile
+=== PAUSE TestReadFile
+=== CONT  TestMultiply
+=== CONT  TestReadFile
+--- PASS: TestMultiply (0.00s)
+--- PASS: TestReadFile (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-foo/foofoo	0.008s	coverage: 100.0% of statements
+=== RUN   TestFuncXXX
+--- PASS: TestFuncXXX (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-foo/internal/xxx	0.006s	coverage: 100.0% of statements
+=== RUN   TestFuncYYY
+--- PASS: TestFuncYYY (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/aileron-project/scripts/pkg-foo/internal/yyy	0.006s	coverage: 100.0% of statements

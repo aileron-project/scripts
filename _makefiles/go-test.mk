@@ -56,7 +56,7 @@ go-test-help:
 ################################################################################
 
 GO_CMD ?= go
-GO_JUNIT_CMD ?=$(GOBIN) go-junit-report
+GO_JUNIT_CMD ?=$(GOBIN)go-junit-report
 GO_JUNIT_VERSION ?= latest
 
 export CGO_ENABLED ?= 0
