@@ -1,10 +1,10 @@
 #!/bin/sh
 
 set -e
-
+echo "Running preinst script:" "$@"
 #----------------------------------------------------
 
-echo "Running preinst script:" $@
+# Write scripts here.
 
 #----------------------------------------------------
 exit 0

@@ -104,7 +104,7 @@ go-build-usage:
 
 .PHONY: go-build
 go-build:
-	$(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
+	$(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) GOARM=$(GOARM) CGO_ENABLED=$(CGO_ENABLED))
 	$(info INFO: Output binaries in $(GO_BUILD_OUTPUT))
 	@for target in $(GO_BUILD_TARGET); do \
 	echo "INFO: Building $$target"; \

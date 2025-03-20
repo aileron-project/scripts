@@ -1,14 +1,13 @@
 #!/bin/sh
 
 set -e
+echo "Running postrm script:" "$@"
 #----------------------------------------------------
 
-echo "Running postrm script:" "$@"
-
 if [ "$1" -eq 0 ]; then
-    if [ -z "$(ls -A /var/lib/hello/)" ]; then
-        rm -rf /var/lib/hello/
-    fi
+	if [ -z "$(ls -A /var/lib/hello/)" ]; then
+		rm -rf /var/lib/hello/
+	fi
 fi
 
 #----------------------------------------------------

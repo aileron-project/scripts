@@ -2,7 +2,6 @@
 
 command="/usr/bin/hello"
 command_args="-f /etc/hello/config.yaml -e /etc/default/hello.env"
-description="hello service"
 pidfile="/run/hello.pid"
 
 checkconfig() {
