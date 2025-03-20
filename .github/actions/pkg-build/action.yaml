@@ -21,6 +21,7 @@ runs:
       if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
       run: |
+        mkdir -p _output/bin/
         mv _output/artifacts/*/* _output/bin/
         ls -la _output/bin/
         ls -la _output/bin/linux-amd64/
