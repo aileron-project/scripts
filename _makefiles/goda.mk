@@ -120,10 +120,12 @@ goda-run-usage:
 	#   - make goda-run
 	#   - make goda-run ARGS=""
 
+
 .PHONY: goda-run
 goda-run: goda-install
 	@mkdir -p $(dir $(GODA_OUTPUT))
 	$(GODA_CMD) graph $(ARGS) $(GODA_OPTION) $(GODA_TARGET) > $(basename $(GODA_OUTPUT)).dot
+	sed -i 's/$(subst /,\/,$(shell go list -m)/)/.\//g' $(basename $(GODA_OUTPUT)).dot
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tsvg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).svg
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tpng $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).png -Gdpi=250
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tjpg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).jpg -Gdpi=250
