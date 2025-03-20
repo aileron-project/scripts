@@ -64,4 +64,8 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: _output/artifacts/
+      - run: |
+          mkdir -p _output/bin/
+          mv _output/artifacts/*/* _output/bin/
+          ls -la _output/bin/
       - uses: aileron-project/scripts/.github/actions/pkg-build@main
