@@ -21,6 +21,7 @@ runs:
       if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
       run: |
+        mv _output/bin/*/* _output/bin/
         ls -la _output/bin/
         ls -la _output/bin/linux-amd64/
     - shell: bash
