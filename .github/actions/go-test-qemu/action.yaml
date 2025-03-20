@@ -28,6 +28,8 @@ runs:
     - uses: aileron-project/scripts/.github/actions/setup-go@main
       if: ${{ inputs.skip-setup != 'true' }}
     - shell: bash
+      run: go tool dist list
+    - shell: bash
       run: |
         make go-test-qemu ARGS="${{ inputs.args }}" \
         GOOS="${{ inputs.go-os }}" GOARCH="${{ inputs.go-arch }}" GOARM="${{ inputs.go-arm }}"

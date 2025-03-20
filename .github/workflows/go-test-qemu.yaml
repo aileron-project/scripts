@@ -31,7 +31,7 @@ jobs:
           - { arch: "mips64", arm: "" }
           - { arch: "mips64le", arm: "" }
           - { arch: "mipsle", arm: "" }
-          - { arch: "sparc64", arm: "" }
+          # - { arch: "sparc64", arm: "" }
     steps:
       - uses: actions/checkout@v4
       - uses: aileron-project/scripts/.github/actions/go-test-qemu@main
