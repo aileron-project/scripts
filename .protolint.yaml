@@ -4,7 +4,8 @@ lint:
   files:
     exclude: []
   directories:
-    exclude: []
+    exclude:
+      - scripts/
   rules:
     no_default: true
     add:
