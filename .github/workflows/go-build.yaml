@@ -54,6 +54,10 @@ jobs:
           go-os: ${{ matrix.os }}
           go-arch: ${{ matrix.arch }}
           go-arm: ${{ matrix.arm }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-${{ matrix.arch }}${{ matrix.arm }}
+          path: "_output/bin/*"
 
   package:
     needs: build
@@ -69,3 +73,7 @@ jobs:
           mv _output/artifacts/*/* _output/bin/
           ls -la _output/bin/
       - uses: aileron-project/scripts/.github/actions/pkg-build@main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: "_output/pkg/*"
