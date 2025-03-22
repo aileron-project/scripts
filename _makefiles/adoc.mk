@@ -47,7 +47,6 @@ PROJECT STRUCTURE:
   │     └─ adoc.mk   |
   └─ Makefile        |-- include scripts/_makefiles/adoc.mk
 endef
-endef
 ################################################################################
 
 
