@@ -1,0 +1,313 @@
+== Hello, AsciiDoc!
+
+stem:[ N(x|\mu,\sigma^2)=\frac{1}{(2\pi\sigma^2)^{1/2}}\exp\{-\frac{1}{2\sigma^2}(x-\mu)^2} ]
+stem:[ \int_-\infty^\inftyN(x|\mu,\sigma^2)dx =1 ]
+
+[cols="e,m,^,>s", width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
+
+[%linenums,ruby]
+----
+ORDERED_LIST_KEYWORDS = {
+  'loweralpha' => 'a',
+  'lowerroman' => 'i',
+  'upperalpha' => 'A',
+  'upperroman' => 'I'
+   #'lowergreek' => 'a'
+   #'arabic'     => '1'
+   #'decimal'    => '1'
+}
+----
+
+
+[%linenums,go]
+----
+package funding
+
+import (
+    "sync"
+    "testing"
+)
+
+const WORKERS = 10
+
+func BenchmarkWithdrawals(b *testing.B) {
+    // Skip N = 1
+    if b.N < WORKERS {
+        return
+    }
+
+    // Add as many dollars as we have iterations this run
+    fund := NewFund(b.N)
+
+    // Casually assume b.N divides cleanly
+    dollarsPerFounder := b.N / WORKERS
+
+    // WaitGroup structs don't need to be initialized
+    // (their "zero value" is ready to use).
+    // So, we just declare one and then use it.
+    var wg sync.WaitGroup
+
+    for i := 0; i < WORKERS; i++ {
+        // Let the waitgroup know we're adding a goroutine
+        wg.Add(1)
+        
+        // Spawn off a founder worker, as a closure
+        go func() {
+            // Mark this worker done when the function finishes
+            defer wg.Done()
+
+            for i := 0; i < dollarsPerFounder; i++ {
+                fund.Withdraw(1)
+            }
+            
+        }() // Remember to call the closure!
+    }
+
+    // Wait for all the workers to finish
+    wg.Wait()
+
+    if fund.Balance() != 0 {
+        b.Error("Balance wasn't zero:", fund.Balance())
+    }
+}
+----
+
+This is an interactive editor.
+Use it to try https://asciidoc.org[AsciiDoc].
+
+[.left.text-center]
+image:images/github-mark.png[]
+
+== Section Title
+
+* A list item
+* Another list item
+
+[,ruby]
+----
+puts 'Hello, World!'
+----
+
+[mermaid]
+....
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>Bob: Hello Bob, how are you?
+  Bob-->>Alice: Great!
+....
+
+[mermaid]
+....
+pie title NETFLIX
+  "Time spent looking for movie" : 90
+  "Time spent watching it" : 10
+....
+
+[mermaid]
+....
+classDiagram
+  BaseClass |>-- Server
+  BaseClass |>-- Client
+  BaseClass |>-- Util
+....
+
+
+[mermaid]
+....
+graph TB
+  sq[Square shape] --> ci((Circle shape))
+
+  subgraph A
+    od>Odd shape]-- Two line<br/>edge comment --> ro
+    di{Diamond with <br/> line break} -.-> ro(Rounded<br>square<br>shape)
+    di==>ro2(Rounded square shape)
+  end
+
+  %% Notice that no text in shape are added here instead that is appended further down
+  e --> od3>Really long text with linebreak<br>in an Odd shape]
+
+  %% Comments after double percent signs
+  e((Inner / circle<br>and some odd <br>special characters)) --> f(,.?!+-*ز)
+
+  cyr[Cyrillic]-->cyr2((Circle shape Начало));
+
+  classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+  classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+  class sq,e green
+  class di orange
+....
+
+
+[diagrams]
+....
+from diagrams import Cluster, Diagram
+from diagrams.aws.compute import ECS, EKS, Lambda
+from diagrams.aws.database import Redshift
+from diagrams.aws.integration import SQS
+from diagrams.aws.storage import S3
+
+with Diagram("Event Processing", show=False):
+    source = EKS("k8s source")
+
+    with Cluster("Event Flows"):
+        with Cluster("Event Workers"):
+            workers = [ECS("worker1"),
+                       ECS("worker2"),
+                       ECS("worker3")]
+
+        queue = SQS("event queue")
+
+        with Cluster("Processing"):
+            handlers = [Lambda("proc1"),
+                        Lambda("proc2"),
+                        Lambda("proc3")]
+
+    store = S3("events store")
+    dw = Redshift("analytics")
+
+    source >> workers >> queue >> handlers
+    handlers >> store
+    handlers >> dw
+....
+
+
+[plantuml]
+....
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+....
+
+[plantuml]
+....
+class Animal {
+  run()
+}
+
+class Cat extends Animal {
+}
+....
+
+
+[graphviz]
+....
+graph G {
+fontname="Helvetica,Arial,sans-serif"
+node [fontname="Helvetica,Arial,sans-serif"]
+edge [fontname="Helvetica,Arial,sans-serif"]
+I5 [shape=ellipse,color=red,style=bold,label="Caroline Bouvier Kennedy\nb. 27.11.1957 New York",image="images/165px-Caroline_Kennedy.jpg",labelloc=b];
+I1 [shape=box,color=blue,style=bold,label="John Fitzgerald Kennedy\nb. 29.5.1917 Brookline\nd. 22.11.1963 Dallas",image="images/kennedyface.jpg",labelloc=b];
+I6 [shape=box,color=blue,style=bold,label="John Fitzgerald Kennedy\nb. 25.11.1960 Washington\nd. 16.7.1999 over the Atlantic Ocean, near Aquinnah, MA, USA",image="images/180px-JFKJr2.jpg",labelloc=b];
+I7 [shape=box,color=blue,style=bold,label="Patrick Bouvier Kennedy\nb. 7.8.1963\nd. 9.8.1963"];
+I2 [shape=ellipse,color=red,style=bold,label="Jaqueline Lee Bouvier\nb. 28.7.1929 Southampton\nd. 19.5.1994 New York City",image="images/jacqueline-kennedy-onassis.jpg",labelloc=b];
+I8 [shape=box,color=blue,style=bold,label="Joseph Patrick Kennedy\nb. 6.9.1888 East Boston\nd. 16.11.1969 Hyannis Port",image="images/1025901671.jpg",labelloc=b];
+I10 [shape=box,color=blue,style=bold,label="Joseph Patrick Kennedy Jr\nb. 1915\nd. 1944"];
+I11 [shape=ellipse,color=red,style=bold,label="Rosemary Kennedy\nb. 13.9.1918\nd. 7.1.2005",image="images/rosemary.jpg",labelloc=b];
+I12 [shape=ellipse,color=red,style=bold,label="Kathleen Kennedy\nb. 1920\nd. 1948"];
+I13 [shape=ellipse,color=red,style=bold,label="Eunice Mary Kennedy\nb. 10.7.1921 Brookline"];
+I9 [shape=ellipse,color=red,style=bold,label="Rose Elizabeth Fitzgerald\nb. 22.7.1890 Boston\nd. 22.1.1995 Hyannis Port",image="images/Rose_kennedy.JPG",labelloc=b];
+I15 [shape=box,color=blue,style=bold,label="Aristotle Onassis"];
+I3 [shape=box,color=blue,style=bold,label="John Vernou Bouvier III\nb. 1891\nd. 1957",image="images/BE037819.jpg",labelloc=b];
+I4 [shape=ellipse,color=red,style=bold,label="Janet Norton Lee\nb. 2.10.1877\nd. 3.1.1968",image="images/n48862003257_1275276_1366.jpg",labelloc=b];
+ I1 -- I5  [style=bold,color=blue]; 
+ I1 -- I6  [style=bold,color=orange]; 
+ I2 -- I6  [style=bold,color=orange]; 
+ I1 -- I7  [style=bold,color=orange]; 
+ I2 -- I7  [style=bold,color=orange]; 
+ I1 -- I2  [style=bold,color=violet]; 
+ I8 -- I1  [style=bold,color=blue]; 
+ I8 -- I10  [style=bold,color=orange]; 
+ I9 -- I10  [style=bold,color=orange]; 
+ I8 -- I11  [style=bold,color=orange]; 
+ I9 -- I11  [style=bold,color=orange]; 
+ I8 -- I12  [style=bold,color=orange]; 
+ I9 -- I12  [style=bold,color=orange]; 
+ I8 -- I13  [style=bold,color=orange]; 
+ I9 -- I13  [style=bold,color=orange]; 
+ I8 -- I9  [style=bold,color=violet]; 
+ I9 -- I1  [style=bold,color=red]; 
+ I2 -- I5  [style=bold,color=red]; 
+ I2 -- I15  [style=bold,color=violet]; 
+ I3 -- I2  [style=bold,color=blue]; 
+ I3 -- I4  [style=bold,color=violet]; 
+ I4 -- I2  [style=bold,color=red]; 
+}
+....
+
+
+
+== Equations in normal blocks
+
+[latexmath]
+++++
+k_{n+1} = n^2 + k_n^2 - k_{n-1}
+++++
+
+Some useful text! Formula for quadratic root:
+
+[stem]
+++++
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+++++
+
+Inline equation works too! latexmath:[a^2+b^2=c^2]. Or as stem
+stem:[a^2+b^2=c^2]. Pretty nice, huh?
+
+== Equations in table cells
+
+Equations in asciidoc style table cells work, too!
+
+[%header]
+|===
+| Demo | Contents
+| Inline Equation in *Asciidoc* Cells
+a|
+
+This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Block Equation in *Asciidoc* Cells
+a| The following is a stem block:
+[stem]
+++++
+a^2+b^2=c^2+d^2
+++++
+
+| Inline Equation in *Normal* Cell
+| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Header* Cell
+h| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Emphasis* Cell
+e| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Monospaced* Cell
+m| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Strong* Cell
+s| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Verse* Cell
+v| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+| Inline Equation in *Literal* Cell
+l| This is an *inline* equation: latexmath:[a^2+b^2=c^2].
+
+|===
+
+== Equations in section titles
+
+=== Proof of stem:[a^2+b^2=c^2]
+
+==== Proof of stem:[a^2+b^2=c^2]

@@ -10,4 +10,21 @@ _output/
 *.test
 *.out
 
+# asciidoc
+.asciidoctor/
+*.html
+*.pdf
+*.epub
+*.epub3
+
+# images
+/docs/adoc/**/*.gif
+/docs/adoc/**/*.jpg
+/docs/adoc/**/*.jpeg
+/docs/adoc/**/*.png
+/docs/adoc/**/*.svg
+
+# For Diagrams
+__pycache__
+
 !*.gitkeep

@@ -8,6 +8,7 @@ ifneq (,$(wildcard .env))
   include .env
 endif
 
+include _makefiles/adoc.mk
 include _makefiles/buf.mk
 include _makefiles/cspell.mk
 include _makefiles/go-build.mk
@@ -26,6 +27,10 @@ include _makefiles/shellcheck.mk
 include _makefiles/shfmt.mk
 include _makefiles/trivy.mk
 include _makefiles/util.mk
+include _makefiles_util/drawio.mk
+include _makefiles_util/diagrams.mk
+include _makefiles_util/graphviz.mk
+include _makefiles_util/mermaid.mk
 
 
 LOCAL_CHECKS += buf-lint

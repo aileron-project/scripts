@@ -1,0 +1,5 @@
+
+= My book
+
+
+include::./bar/basic.adoc[]

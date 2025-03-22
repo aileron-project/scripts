@@ -13,6 +13,12 @@
 *.{bat,[bB][aA][tT]} text eol=crlf
 *.{ps1,[pP][sS]1} text eol=crlf
 
+*.gif diff=image
+*.jpg diff=image
+*.jpeg diff=image
+*.png diff=image
+*.svg diff=image
+
 # Exclude from git diff.
 go.sum merge=union linguist-generated=true
 
