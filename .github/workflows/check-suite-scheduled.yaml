@@ -1,0 +1,21 @@
+name: Check Suite Scheduled
+
+on:
+  workflow_dispatch: {}
+  workflow_call: {}
+  push: {}
+  schedule:
+    - cron: '0 20 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  vulnerability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: aileron-project/scripts/.github/actions/govulncheck@main

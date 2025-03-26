@@ -44,12 +44,3 @@ jobs:
         with:
           submodules: recursive
       - uses: aileron-project/scripts/.github/actions/golangci-lint@main
-
-  vulnerability:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: aileron-project/scripts/.github/actions/govulncheck@main
