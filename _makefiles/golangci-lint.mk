@@ -60,7 +60,7 @@ GOLANGCI_LINT_OPTION ?=
 .PHONY: golangci-lint-install-usage
 golangci-lint-install-usage:
 	# Usage : make golangci-lint-install ARGS=""
-	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$$(GOLANGCI_LINT_VERSION)"
+	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$$(GOLANGCI_LINT_VERSION)"
 	# Desc  : Install golangci-lint using `go install`.
 	# Examples:
 	#   - make golangci-lint-install
@@ -70,10 +70,10 @@ golangci-lint-install-usage:
 .PHONY: golangci-lint-install
 golangci-lint-install:
 ifeq ("golangci-lint-install","$(MAKECMDGOALS)")
-	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
 else
 ifeq (,$(shell which $(GOLANGCI_LINT_CMD) 2>/dev/null))
-	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@$(GOLANGCI_LINT_VERSION)"
 endif
 endif
 #______________________________________________________________________________#

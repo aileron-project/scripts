@@ -41,9 +41,9 @@ LOCAL_CHECKS += govulncheck-run
 LOCAL_CHECKS += markdownlint-run
 LOCAL_CHECKS += prettier-run
 LOCAL_CHECKS += protolint-run
-LOCAL_CHECKS += scanoss-run
 LOCAL_CHECKS += shellcheck-run
 LOCAL_CHECKS += shfmt-run
+LOCAL_CHECKS += scanoss-run # <--Should be last. To minimize API calls.
 
 .PHONY: local-check
 local-check: $(LOCAL_CHECKS)
