@@ -2,6 +2,7 @@
 .vscode/
 .idea/
 
+# Project
 apis/
 _bin/
 _output/
@@ -9,22 +10,36 @@ _output/
 /*.env
 *.test
 *.out
+*.o
+*.so
+*.exe
 
-# asciidoc
+# Asciidoc
 .asciidoctor/
 *.html
 *.pdf
 *.epub
 *.epub3
 
-# images
+# Generated images
 /docs/adoc/**/*.gif
 /docs/adoc/**/*.jpg
 /docs/adoc/**/*.jpeg
 /docs/adoc/**/*.png
 /docs/adoc/**/*.svg
 
-# For Diagrams
+# Diagrams
 __pycache__
 
+# For convenience
+tmp/
+temp/
+work/
+study/
+local/
+*.tmp
+*.temp
+
+# Exclusion
 !*.gitkeep
+!*.gitignore

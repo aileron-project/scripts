@@ -31,6 +31,7 @@ include _makefiles_util/drawio.mk
 include _makefiles_util/diagrams.mk
 include _makefiles_util/graphviz.mk
 include _makefiles_util/mermaid.mk
+include _makefiles_util/pkgsite.mk
 
 
 LOCAL_CHECKS += buf-lint
