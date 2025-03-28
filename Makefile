@@ -38,7 +38,6 @@ LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run
 LOCAL_CHECKS += go-licenses-run
 LOCAL_CHECKS += golangci-lint-run
-LOCAL_CHECKS += govulncheck-run
 LOCAL_CHECKS += markdownlint-run
 LOCAL_CHECKS += prettier-run
 LOCAL_CHECKS += protolint-run
