@@ -81,9 +81,11 @@ goda-install-usage:
 goda-install:
 ifeq ("goda-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/loov/goda@$(GODA_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(GODA_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/loov/goda@$(GODA_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

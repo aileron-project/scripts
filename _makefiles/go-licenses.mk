@@ -75,9 +75,11 @@ go-licenses-install-usage:
 go-licenses-install:
 ifeq ("go-licenses-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(GO_LICENSES_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/google/go-licenses/v2@$(GO_LICENSES_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

@@ -69,9 +69,11 @@ shfmt-install-usage:
 shfmt-install:
 ifeq ("shfmt-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(SHFMT_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "mvdan.cc/sh/v3/cmd/shfmt@$(SHFMT_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

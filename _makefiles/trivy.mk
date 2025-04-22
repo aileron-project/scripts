@@ -74,9 +74,11 @@ trivy-install-usage:
 trivy-install:
 ifeq ("trivy-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(TRIVY_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/aquasecurity/trivy/cmd/trivy@$(TRIVY_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

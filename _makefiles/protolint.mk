@@ -69,9 +69,11 @@ protolint-install-usage:
 protolint-install:
 ifeq ("protolint-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(PROTOLINT_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/yoheimuta/protolint/cmd/protolint@$(PROTOLINT_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

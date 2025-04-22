@@ -67,9 +67,11 @@ govulncheck-install-usage:
 govulncheck-install:
 ifeq ("govulncheck-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "golang.org/x/vuln/cmd/govulncheck@$(GOVULNCHECK_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(GOVULNCHECK_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "golang.org/x/vuln/cmd/govulncheck@$(GOVULNCHECK_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

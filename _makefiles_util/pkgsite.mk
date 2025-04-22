@@ -58,9 +58,11 @@ PKGSITE_OPTION ?=
 pkgsite-install:
 ifeq ("pkgsite-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "golang.org/x/pkgsite/cmd/pkgsite@$(PKGSITE_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(PKGSITE_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "golang.org/x/pkgsite/cmd/pkgsite@$(PKGSITE_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 

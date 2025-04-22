@@ -81,9 +81,11 @@ nfpm-install-usage:
 nfpm-install:
 ifeq ("nfpm-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/cmd/nfpm@$(NFPM_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(NFPM_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/cmd/nfpm@$(NFPM_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#

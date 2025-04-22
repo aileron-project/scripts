@@ -75,9 +75,11 @@ buf-install-usage:
 buf-install:
 ifeq ("buf-install","$(MAKECMDGOALS)")
 	$(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
+	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(BUF_CMD) 2>/dev/null))
 	$(GO_CMD) install $(ARGS) "github.com/bufbuild/buf/cmd/buf@$(BUF_VERSION)"
+	$(GO_CMD) mod tidy
 endif
 endif
 #______________________________________________________________________________#
