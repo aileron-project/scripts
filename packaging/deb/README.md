@@ -32,13 +32,13 @@ Packages are built with [nfpm](https://github.com/goreleaser/nfpm).
 ```bash
 ARCH=amd64
 VERSION=v1.0.0
-sudo apt install ./hello_${VERSION}-1_${ARCH}.deb
+sudo apt-get install ./hello_${VERSION}-1_${ARCH}.deb
 ```
 
 **Remove.**
 
 ```bash
-sudo apt remove --purge hello
+sudo apt-get remove --purge hello
 ```
 
 ## Install and remove with dpkg

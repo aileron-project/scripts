@@ -178,7 +178,10 @@ go-test-qemu-usage:
 	#   - make go-test-qemu GO_TEST_TARGET=./foo/...
 	#   - make go-test-qemu GOARCH=arm64
 	#   - make go-test-qemu GO_TEST_TAGS="integration"
-
+	# Notes:
+	#   Make sure "qemu-user" is installed.
+	#   "qemu-user" is only available on linux.
+	#   For example, run << sudo apt-get -y update & sudo apt-get install -y qemu-user >>
 .PHONY: go-test-qemu
 go-test-qemu: 
 	$(info INFO: GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED))
