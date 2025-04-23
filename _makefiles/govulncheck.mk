@@ -27,7 +27,7 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                        |-- Project
+  /                        |-- Go Project
   ├─ scripts/              |-- Git submodule
   │  └─ _makefiles/        |
   │     └─ govulncheck.mk  |

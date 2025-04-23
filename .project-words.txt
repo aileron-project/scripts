@@ -140,6 +140,8 @@ penwidth
 pidfile
 pipefail
 pkgs
+pkgsite
+PKGSITE
 plantuml
 polyline
 postfilter
